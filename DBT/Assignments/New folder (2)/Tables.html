@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+        <script>
+            $().ready(function()
+            {
+                $("#b1").click(function () 
+                {
+                    let x=$("#i1").val()
+                    let y=$("#i2").val()
+                    for(i=1;i<=y;i++)
+                    {
+                        let t=x*i;
+                         $("#t2").append(`<tr><td value=${x*i}> ${x}*${i}</td></tr>`);
+                         $("#t3").append(`<tr><td value=${x*i}> ${t}</td></tr>`);
+                       let res= console.log(x," * ", i ," ",t)
+                  }
+                  
+                })
+            })
+        </script> 
+    </head>
+    <body>
+        Number:
+         <input type="number" id="i1"/>
+         Upto:
+         <input type="number" id="i2" />
+        <input type="button" value="Show Table" id="b1"/>
+        <!-- <p id="p1" value="ptag"> -->
+            <table>
+                <thead>
+                    <tr>
+                        <td id="t2" style="border: 4px; color: brown; font-size:30px;"> Table </td>
+                        <td id="t3"style="border: 4px; color: brown; font-size:30px;" > Result </td>
+                    </thead>   
+                    
+                    <!-- <td></td>
+                    <td></td> -->
+                    </tr>
+                </table>
+            </table>
+        </p>
+    </body>
+</html>

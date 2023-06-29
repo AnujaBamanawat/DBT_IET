@@ -1,0 +1,15 @@
+section 1:
+
+1) select *from emp where empno%2=0;
+2) select ename,job,sal from emp order by sal desc limit 2,1;
+3) select ename,job,sal from emp where sal >(select sal from emp where ename ='smith');
+4) select *from emp where year(hiredate)='1981';
+5) select ename,deptno from emp where job='manager'and deptno=(select deptno from dept where dname='sales');
+6) select ename,empno,job,sal from emp where sal>1000 and sal<2000;
+7)
+8)select count(ename) from emp where ename like "A%" or ename like "M%";
+9)
+10) select * from emp where empno not in (select empno from emp,emp_cards where emp.empno=emp_cards.empid);
+
+
+

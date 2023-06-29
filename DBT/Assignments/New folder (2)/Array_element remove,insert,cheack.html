@@ -1,0 +1,52 @@
+<html>
+    <head>
+        <script>
+            var arr=[10,20,30,40,50,60]
+            function check()
+            {
+                var t=document.getElementById("t1").value;
+                var v=arr.indexOf(parseInt(t))
+                {
+                    if(v<0)
+                    {
+                        document.getElementById("p1").innerText="not found";
+                    }
+                    else
+                    {
+                        document.getElementById("p1").innerText="found";
+                    }
+                }
+            }
+            function append()
+            {
+                var t=document.getElementById("t1").value;
+                arr.push(parseInt(t));
+                document.getElementById("p1").innerText=arr;
+            }
+            function insert()
+            {
+                var t=document.getElementById("t1").value;
+                var u=document.getElementById("t2").value;
+                arr.splice(u,0,parseInt(t))
+                document.getElementById("p1").innerText=arr; 
+            }
+            function remove()
+            {
+                var t=document.getElementById("t1").value;
+                var u=document.getElementById("t2").value;
+                arr.splice(u);
+                document.getElementById("p1").innerText=arr;
+            }
+
+        </script>
+        <body>
+            <input type="text" id="t1">
+            <input type="text" id="t2">
+            <button onclick="check()">check</button>
+            <button onclick="append()">append</button>
+            <button onclick="insert()">insert</button>
+            <button onclick="remove()">remove</button>
+            <p id="p1"></p>
+        </body>
+    </head>
+</html>

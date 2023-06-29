@@ -1,0 +1,36 @@
+  { ename: 'vrushali', job: 'analyst', sal: 4999, comm: null },
+  { ename: 'vasant', job: 'salesman', sal: 2200, comm: 0 },
+  { ename: 'vasu', job: 'salesman', sal: 2200, comm: 250 },
+  { ename: 'peter', job: 'analyst', sal: 3500, comm: null },
+  { ename: 'raju', job: 'administrator', sal: 3400, comm: null },
+  { ename: 'rahul', job: 'clerk', sal: 1200, comm: null },
+  { ename: 'saleel', job: 'analyst', sal: 3700, comm: null },
+  { ename: 'amit', job: 'administrator', sal: 3500, comm: null }
+]
+Type "it" for more
+nosql> db.emp.find({job:'Manager'}, {_id:false, empno:1, ename:1, job:1, sal:true, comm:true})
+
+nosql> db.emp.find({job:'manager'}, {_id:false, empno:1, ename:1, job:1, sal:true, comm:true})
+[
+  { ename: 'james', job: 'manager', sal: 4700, comm: null },
+  { ename: 'smith', job: 'manager', sal: 3400, comm: null },
+  { ename: 'bob', job: 'manager', sal: 4900, comm: null }
+]
+nosql> edit
+Opening an editor...
+
+nosql> edit db.emp.find({job:'manager'}, {_id:false, empno:1, ename:1, job:1, sal:true, comm:true})
+Opening an editor...
+
+nosql> db.emp.find({ $or: [{ job: 'manager' }, { job: 'salesman' }] }, { _id: false, empno: 1, enename: 1, job: 1, sal: true, comm: true })
+[
+  { ename: 'james', job: 'manager', sal: 4700, comm: null },
+  { ename: 'smith', job: 'manager', sal: 3400, comm: null },
+  { ename: 'scott', job: 'salesman', sal: 2500, comm: 350 },
+  { ename: 'martin', job: 'salesman', sal: 2900, comm: 735 },
+  { ename: 'crow', job: 'salesman', sal: 3200, comm: null },
+  { ename: 'bob', job: 'manager', sal: 4900, comm: null },
+  { ename: 'vasant', job: 'salesman', sal: 2200, comm: 0 },
+  { ename: 'vasu', job: 'salesman', sal: 2200, comm: 250 }
+]
+nosql>

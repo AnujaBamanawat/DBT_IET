@@ -1,0 +1,1955 @@
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 306
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select ename into x from emp;
+ERROR 1327 (42000): Undeclared variable: x
+mysql> set @x;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql>
+mysql>
+mysql> set @x := 'manager';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @x;
++---------+
+| @x      |
++---------+
+| manager |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select ename, job, sal from emp where job = @x;
++---------+---------+------+
+| ename   | job     | sal  |
++---------+---------+------+
+| JONES   | MANAGER | 2975 |
+| BLAKE   | MANAGER | 2850 |
+| CLARK   | MANAGER | 2450 |
+| HOFFMAN | MANAGER | 4150 |
+| ALEX    | MANAGER | 1250 |
++---------+---------+------+
+5 rows in set (0.04 sec)
+
+mysql>
+mysql> set @y := '';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @y;
++------+
+| @y   |
++------+
+|      |
++------+
+1 row in set (0.00 sec)
+
+mysql> select ename into y from emp;
+ERROR 1327 (42000): Undeclared variable: y
+mysql> select ename into @y from emp;
+ERROR 1172 (42000): Result consisted of more than one row
+mysql>
+mysql>
+mysql>
+mysql> select ename into @y from emp where empno=7788;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select @y;
++-------+
+| @y    |
++-------+
+| SCOTT |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select ename,sal into @y from emp where empno=7788;
+ERROR 1222 (21000): The used SELECT statements have a different number of columns
+mysql>
+mysql>
+mysql> select ename,sal into @y, @x from emp where empno=7788;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select @y, @x;
++-------+------+
+| @y    | @x   |
++-------+------+
+| SCOTT | 3000 |	
++-------+------+
+1 row in set (0.00 sec)
+ 
+mysql> source C:\saleel\pl1.sql
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> call pro1();
++-------------+
+| hello World |
++-------------+
+| hello World |
++-------------+
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> source C:\saleel\pl1.sql
+ERROR 1304 (42000): PROCEDURE pro1 already exists
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.07 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> call pro1();
++---------------------+
+| hello World kkkkkkk |
++---------------------+
+| hello World kkkkkkk |
++---------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro1();
++---------------------+
+| hello World kkkkkkk |
++---------------------+
+| hello World kkkkkkk |
++---------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1();
++-------------+
+| hello World |
++-------------+
+| hello World |
++-------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> call pro1(1,2);
++-------+
+| x + y |
++-------+
+|     3 |
++-------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1(1,2);
++------+
+| R1   |
++------+
+|    3 |
++------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> call pro1(1,2, 3);
++------+
+| R1   |
++------+
+|    6 |
++------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.06 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> call pro1(1,2);
++------+
+| R1   |
++------+
+|    3 |
++------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.07 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> set @a :=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro1(5,6,@a);
+ERROR 1318 (42000): Incorrect number of arguments for PROCEDURE db2.pro1; expected 2, got 3
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.06 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1(5, 6, @a);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @a;
++------+
+| @a   |
++------+
+|   11 |
++------+
+1 row in set (0.00 sec)
+
+mysql> desc t;
+ERROR 1146 (42S02): Table 'db2.t' doesn't exist
+mysql> create table t(id int primary key, ename varchar(20));
+Query OK, 0 rows affected (0.43 sec)
+
+mysql> desc t;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1(1,,'saleel');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','saleel')' at line 1
+mysql> call pro1(1,'saleel');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from t;
++----+--------+
+| id | ename  |
++----+--------+
+|  1 | saleel |
++----+--------+
+1 row in set (0.00 sec)
+
+mysql> call pro1(1,'saleel');
+ERROR 1062 (23000): Duplicate entry '1' for key 't.PRIMARY'
+mysql>
+mysql>
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'exit handler for 1062 select "ID already present!"
+        insert into t values(x, y);
+' at line 3
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> call pro1(1,'saleel');
++---------------------+
+| ID already present! |
++---------------------+
+| ID already present! |
++---------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc t;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table t add city varchar(20);
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc t;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(20) | YES  |     | NULL    |       |
+| city  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.06 sec)
+
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from t;
++----+--------+------+
+| id | ename  | city |
++----+--------+------+
+|  1 | saleel | NULL |
++----+--------+------+
+1 row in set (0.00 sec)
+
+mysql> call pro1(1,'saleel','pune');
++---------------------+
+| ID already present! |
++---------------------+
+| ID already present! |
++---------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro1(2,'saleel','pune');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> call pro1(3,'saleel','baroda');
++--------------+
+| Invalid city |
++--------------+
+| Invalid city |
++--------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from t;
++----+--------+------+
+| id | ename  | city |
++----+--------+------+
+|  1 | saleel | NULL |
+|  2 | saleel | pune |
++----+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> call pro1(3,'saleel','PUNE');
++--------------+
+| Invalid city |
++--------------+
+| Invalid city |
++--------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+ERROR 1308 (42000): LEAVE with no matching label: s
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> call pro1();
+ERROR 1318 (42000): Incorrect number of arguments for PROCEDURE db2.pro1; expected 1, got 0
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1();
++------+
+| x    |
++------+
+|    1 |
++------+
+1 row in set (0.00 sec)
+
++------+
+| x    |
++------+
+|    2 |
++------+
+1 row in set (0.00 sec)
+
++------+
+| x    |
++------+
+|    3 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    4 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    5 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    6 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    7 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|    8 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|    9 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|   10 |
++------+
+1 row in set (0.03 sec)
+
++------+
+| x    |
++------+
+|   11 |
++------+
+1 row in set (0.03 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1();
++------+
+| x    |
++------+
+|    1 |
++------+
+1 row in set (0.00 sec)
+
++------+
+| x    |
++------+
+|    2 |
++------+
+1 row in set (0.00 sec)
+
++------+
+| x    |
++------+
+|    3 |
++------+
+1 row in set (0.00 sec)
+
++------+
+| x    |
++------+
+|    4 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    5 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    6 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    7 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|    8 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|    9 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|   10 |
++------+
+1 row in set (0.03 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> set @a := 0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> set @a := 2;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro1(@a);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @a;
++------+
+| @a   |
++------+
+|    4 |
++------+
+1 row in set (0.00 sec)
+
+mysql> call pro1(@a);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @a;
++------+
+| @a   |
++------+
+|    8 |
++------+
+1 row in set (0.00 sec)
+
+mysql> call pro1(@a);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @a;
++------+
+| @a   |
++------+
+|   16 |
++------+
+1 row in set (0.00 sec)
+
+mysql>
+
+----------------------------------------
+
+
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 306
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> select ename into x from emp;
+ERROR 1327 (42000): Undeclared variable: x
+mysql> set @x;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+mysql>
+mysql>
+mysql> set @x := 'manager';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @x;
++---------+
+| @x      |
++---------+
+| manager |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select ename, job, sal from emp where job = @x;
++---------+---------+------+
+| ename   | job     | sal  |
++---------+---------+------+
+| JONES   | MANAGER | 2975 |
+| BLAKE   | MANAGER | 2850 |
+| CLARK   | MANAGER | 2450 |
+| HOFFMAN | MANAGER | 4150 |
+| ALEX    | MANAGER | 1250 |
++---------+---------+------+
+5 rows in set (0.04 sec)
+
+mysql>
+mysql> set @y := '';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @y;
++------+
+| @y   |
++------+
+|      |
++------+
+1 row in set (0.00 sec)
+
+mysql> select ename into y from emp;
+ERROR 1327 (42000): Undeclared variable: y
+mysql> select ename into @y from emp;
+ERROR 1172 (42000): Result consisted of more than one row
+mysql>
+mysql>
+mysql>
+mysql> select ename into @y from emp where empno=7788;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select @y;
++-------+
+| @y    |
++-------+
+| SCOTT |
++-------+
+1 row in set (0.00 sec)
+
+mysql> select ename,sal into @y from emp where empno=7788;
+ERROR 1222 (21000): The used SELECT statements have a different number of columns
+mysql>
+mysql>
+mysql> select ename,sal into @y, @x from emp where empno=7788;
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select @y, @x;
++-------+------+
+| @y    | @x   |
++-------+------+
+| SCOTT | 3000 |
++-------+------+
+1 row in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 3
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'end' at line 1
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> call pro1();
++-------------+
+| hello World |
++-------------+
+| hello World |
++-------------+
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> source C:\saleel\pl1.sql
+ERROR 1304 (42000): PROCEDURE pro1 already exists
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.07 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> call pro1();
++---------------------+
+| hello World kkkkkkk |
++---------------------+
+| hello World kkkkkkk |
++---------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro1();
++---------------------+
+| hello World kkkkkkk |
++---------------------+
+| hello World kkkkkkk |
++---------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1();
++-------------+
+| hello World |
++-------------+
+| hello World |
++-------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> call pro1(1,2);
++-------+
+| x + y |
++-------+
+|     3 |
++-------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1(1,2);
++------+
+| R1   |
++------+
+|    3 |
++------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> call pro1(1,2, 3);
++------+
+| R1   |
++------+
+|    6 |
++------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.06 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> call pro1(1,2);
++------+
+| R1   |
++------+
+|    3 |
++------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.07 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> set @a :=0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro1(5,6,@a);
+ERROR 1318 (42000): Incorrect number of arguments for PROCEDURE db2.pro1; expected 2, got 3
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.06 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1(5, 6, @a);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @a;
++------+
+| @a   |
++------+
+|   11 |
++------+
+1 row in set (0.00 sec)
+
+mysql> desc t;
+ERROR 1146 (42S02): Table 'db2.t' doesn't exist
+mysql> create table t(id int primary key, ename varchar(20));
+Query OK, 0 rows affected (0.43 sec)
+
+mysql> desc t;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1(1,,'saleel');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ','saleel')' at line 1
+mysql> call pro1(1,'saleel');
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from t;
++----+--------+
+| id | ename  |
++----+--------+
+|  1 | saleel |
++----+--------+
+1 row in set (0.00 sec)
+
+mysql> call pro1(1,'saleel');
+ERROR 1062 (23000): Duplicate entry '1' for key 't.PRIMARY'
+mysql>
+mysql>
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'exit handler for 1062 select "ID already present!"
+        insert into t values(x, y);
+' at line 3
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> call pro1(1,'saleel');
++---------------------+
+| ID already present! |
++---------------------+
+| ID already present! |
++---------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc t;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table t add city varchar(20);
+Query OK, 0 rows affected (0.14 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc t;
++-------+-------------+------+-----+---------+-------+
+| Field | Type        | Null | Key | Default | Extra |
++-------+-------------+------+-----+---------+-------+
+| id    | int         | NO   | PRI | NULL    |       |
+| ename | varchar(20) | YES  |     | NULL    |       |
+| city  | varchar(20) | YES  |     | NULL    |       |
++-------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.06 sec)
+
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select * from t;
++----+--------+------+
+| id | ename  | city |
++----+--------+------+
+|  1 | saleel | NULL |
++----+--------+------+
+1 row in set (0.00 sec)
+
+mysql> call pro1(1,'saleel','pune');
++---------------------+
+| ID already present! |
++---------------------+
+| ID already present! |
++---------------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro1(2,'saleel','pune');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> call pro1(3,'saleel','baroda');
++--------------+
+| Invalid city |
++--------------+
+| Invalid city |
++--------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from t;
++----+--------+------+
+| id | ename  | city |
++----+--------+------+
+|  1 | saleel | NULL |
+|  2 | saleel | pune |
++----+--------+------+
+2 rows in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+mysql> call pro1(3,'saleel','PUNE');
++--------------+
+| Invalid city |
++--------------+
+| Invalid city |
++--------------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+ERROR 1308 (42000): LEAVE with no matching label: s
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> call pro1();
+ERROR 1318 (42000): Incorrect number of arguments for PROCEDURE db2.pro1; expected 1, got 0
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1();
++------+
+| x    |
++------+
+|    1 |
++------+
+1 row in set (0.00 sec)
+
++------+
+| x    |
++------+
+|    2 |
++------+
+1 row in set (0.00 sec)
+
++------+
+| x    |
++------+
+|    3 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    4 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    5 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    6 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    7 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|    8 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|    9 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|   10 |
++------+
+1 row in set (0.03 sec)
+
++------+
+| x    |
++------+
+|   11 |
++------+
+1 row in set (0.03 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call pro1();
++------+
+| x    |
++------+
+|    1 |
++------+
+1 row in set (0.00 sec)
+
++------+
+| x    |
++------+
+|    2 |
++------+
+1 row in set (0.00 sec)
+
++------+
+| x    |
++------+
+|    3 |
++------+
+1 row in set (0.00 sec)
+
++------+
+| x    |
++------+
+|    4 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    5 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    6 |
++------+
+1 row in set (0.01 sec)
+
++------+
+| x    |
++------+
+|    7 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|    8 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|    9 |
++------+
+1 row in set (0.02 sec)
+
++------+
+| x    |
++------+
+|   10 |
++------+
+1 row in set (0.03 sec)
+
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> set @a := 0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> set @a := 2;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro1(@a);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @a;
++------+
+| @a   |
++------+
+|    4 |
++------+
+1 row in set (0.00 sec)
+
+mysql> call pro1(@a);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @a;
++------+
+| @a   |
++------+
+|    8 |
++------+
+1 row in set (0.00 sec)
+
+mysql> call pro1(@a);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @a;
++------+
+| @a   |
++------+
+|   16 |
++------+
+1 row in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+ERROR 1415 (0A000): Not allowed to return a result set from a function
+mysql>
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.04 sec)
+
+ERROR 1415 (0A000): Not allowed to return a result set from a function
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+ERROR 1320 (42000): No RETURN found in FUNCTION db2.f1
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+ERROR 1418 (HY000): This function has none of DETERMINISTIC, NO SQL, or READS SQL DATA in its declaration and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+ERROR 1418 (HY000): This function has none of DETERMINISTIC, NO SQL, or READS SQL DATA in its declaration and binary logging is enabled (you *might* want to use the less safe log_bin_trust_function_creators variable)
+mysql> set global log_bin_trust_function_creators= 1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> select f1();
++-------------+
+| f1()        |
++-------------+
+| hello world |
++-------------+
+1 row in set (0.02 sec)
+
+mysql> select f1() R1;
++-------------+
+| R1          |
++-------------+
+| hello world |
++-------------+
+1 row in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select f1(4,5);
++---------+
+| f1(4,5) |
++---------+
+|       9 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.03 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'in x int, y int) returns int
+BEGIN
+        return x+y;
+end' at line 1
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> select f1(5,5);
++---------+
+| f1(5,5) |
++---------+
+|      10 |
++---------+
+1 row in set (0.00 sec)
+
+mysql> select ename, job,sal, deptno from emp where deptno = f1(5,5);
++--------+-----------+------+--------+
+| ename  | job       | sal  | deptno |
++--------+-----------+------+--------+
+| AARAV  | CLERK     | 3350 |     10 |
+| THOMAS | CLERK     | 1750 |     10 |
+| CLARK  | MANAGER   | 2450 |     10 |
+| KING   | PRESIDENT | 5000 |     10 |
+| MILLER | CLERK     | 1300 |     10 |
++--------+-----------+------+--------+
+5 rows in set (0.00 sec)
+
+mysql> select ename, job,sal, deptno from emp where deptno = f1(5,15);
++---------+-----------------+------+--------+
+| ename   | job             | sal  | deptno |
++---------+-----------------+------+--------+
+| SHARMIN | Public Relation | 1750 |     20 |
+| BANDISH | Public Relation | 1750 |     20 |
+| SMITH   | CLERK           |  800 |     20 |
+| JONES   | MANAGER         | 2975 |     20 |
+| SCOTT   | ANALYST         | 3000 |     20 |
+| FRED    | vice PRESIDENT  | 5000 |     20 |
+| ADAMS   | CLERK           | 1100 |     20 |
+| FORD    | ANALYST         | 3000 |     20 |
++---------+-----------------+------+--------+
+8 rows in set (0.00 sec)
+
+mysql> select ename, job,sal, comm from emp
+    -> ;
++----------+---------------------+------+------+
+| ename    | job                 | sal  | comm |
++----------+---------------------+------+------+
+| GITA     | Compliance officers | 1750 | NULL |
+| VRUSHALI | Compliance officers | 1750 | NULL |
+| SHARMIN  | Public Relation     | 1750 | NULL |
+| BANDISH  | Public Relation     | 1750 | NULL |
+| SMITH    | CLERK               |  800 | NULL |
+| AARAV    | CLERK               | 3350 | NULL |
+| THOMAS   | CLERK               | 1750 | NULL |
+| ALLEN    | SALESMAN            | 1600 |  300 |
+| WARD     | SALESMAN            | 1250 |  500 |
+| JONES    | MANAGER             | 2975 | NULL |
+| MARTIN   | SALESMAN            | 1250 | 1400 |
+| BLAKE    | MANAGER             | 2850 | NULL |
+| CLARK    | MANAGER             | 2450 | NULL |
+| SCOTT    | ANALYST             | 3000 | NULL |
+| KING     | PRESIDENT           | 5000 | NULL |
+| FRED     | vice PRESIDENT      | 5000 | NULL |
+| TURNER   | SALESMAN            | 1500 |    0 |
+| ADAMS    | CLERK               | 1100 | NULL |
+| JAMES    | CLERK               |  950 | NULL |
+| FORD     | ANALYST             | 3000 | NULL |
+| HOFFMAN  | MANAGER             | 4150 | NULL |
+| GRASS    | SALESMAN            | 2575 | 2700 |
+| MILLER   | CLERK               | 1300 | NULL |
+| AARUSH   | SALESMAN            | 1350 | 2700 |
+| ALEX     | MANAGER             | 1250 |  500 |
+| NATASHA  | CLERK               | 1750 | NULL |
+| SANGITA  | Compliance officers | 1750 | NULL |
+| SUPRIYA  | ANALYST             | 1750 | NULL |
++----------+---------------------+------+------+
+28 rows in set (0.00 sec)
+
+mysql> select ename, job,sal, comm, f1(sal,comm) R1 from emp;
++----------+---------------------+------+------+------+
+| ename    | job                 | sal  | comm | R1   |
++----------+---------------------+------+------+------+
+| GITA     | Compliance officers | 1750 | NULL | NULL |
+| VRUSHALI | Compliance officers | 1750 | NULL | NULL |
+| SHARMIN  | Public Relation     | 1750 | NULL | NULL |
+| BANDISH  | Public Relation     | 1750 | NULL | NULL |
+| SMITH    | CLERK               |  800 | NULL | NULL |
+| AARAV    | CLERK               | 3350 | NULL | NULL |
+| THOMAS   | CLERK               | 1750 | NULL | NULL |
+| ALLEN    | SALESMAN            | 1600 |  300 | 1900 |
+| WARD     | SALESMAN            | 1250 |  500 | 1750 |
+| JONES    | MANAGER             | 2975 | NULL | NULL |
+| MARTIN   | SALESMAN            | 1250 | 1400 | 2650 |
+| BLAKE    | MANAGER             | 2850 | NULL | NULL |
+| CLARK    | MANAGER             | 2450 | NULL | NULL |
+| SCOTT    | ANALYST             | 3000 | NULL | NULL |
+| KING     | PRESIDENT           | 5000 | NULL | NULL |
+| FRED     | vice PRESIDENT      | 5000 | NULL | NULL |
+| TURNER   | SALESMAN            | 1500 |    0 | 1500 |
+| ADAMS    | CLERK               | 1100 | NULL | NULL |
+| JAMES    | CLERK               |  950 | NULL | NULL |
+| FORD     | ANALYST             | 3000 | NULL | NULL |
+| HOFFMAN  | MANAGER             | 4150 | NULL | NULL |
+| GRASS    | SALESMAN            | 2575 | 2700 | 5275 |
+| MILLER   | CLERK               | 1300 | NULL | NULL |
+| AARUSH   | SALESMAN            | 1350 | 2700 | 4050 |
+| ALEX     | MANAGER             | 1250 |  500 | 1750 |
+| NATASHA  | CLERK               | 1750 | NULL | NULL |
+| SANGITA  | Compliance officers | 1750 | NULL | NULL |
+| SUPRIYA  | ANALYST             | 1750 | NULL | NULL |
++----------+---------------------+------+------+------+
+28 rows in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select ename, job,sal, comm, f1(sal,comm) R1 from emp;
++----------+---------------------+------+------+------+
+| ename    | job                 | sal  | comm | R1   |
++----------+---------------------+------+------+------+
+| GITA     | Compliance officers | 1750 | NULL | 1750 |
+| VRUSHALI | Compliance officers | 1750 | NULL | 1750 |
+| SHARMIN  | Public Relation     | 1750 | NULL | 1750 |
+| BANDISH  | Public Relation     | 1750 | NULL | 1750 |
+| SMITH    | CLERK               |  800 | NULL |  800 |
+| AARAV    | CLERK               | 3350 | NULL | 3350 |
+| THOMAS   | CLERK               | 1750 | NULL | 1750 |
+| ALLEN    | SALESMAN            | 1600 |  300 | 1900 |
+| WARD     | SALESMAN            | 1250 |  500 | 1750 |
+| JONES    | MANAGER             | 2975 | NULL | 2975 |
+| MARTIN   | SALESMAN            | 1250 | 1400 | 2650 |
+| BLAKE    | MANAGER             | 2850 | NULL | 2850 |
+| CLARK    | MANAGER             | 2450 | NULL | 2450 |
+| SCOTT    | ANALYST             | 3000 | NULL | 3000 |
+| KING     | PRESIDENT           | 5000 | NULL | 5000 |
+| FRED     | vice PRESIDENT      | 5000 | NULL | 5000 |
+| TURNER   | SALESMAN            | 1500 |    0 | 1500 |
+| ADAMS    | CLERK               | 1100 | NULL | 1100 |
+| JAMES    | CLERK               |  950 | NULL |  950 |
+| FORD     | ANALYST             | 3000 | NULL | 3000 |
+| HOFFMAN  | MANAGER             | 4150 | NULL | 4150 |
+| GRASS    | SALESMAN            | 2575 | 2700 | 5275 |
+| MILLER   | CLERK               | 1300 | NULL | 1300 |
+| AARUSH   | SALESMAN            | 1350 | 2700 | 4050 |
+| ALEX     | MANAGER             | 1250 |  500 | 1750 |
+| NATASHA  | CLERK               | 1750 | NULL | 1750 |
+| SANGITA  | Compliance officers | 1750 | NULL | 1750 |
+| SUPRIYA  | ANALYST             | 1750 | NULL | 1750 |
++----------+---------------------+------+------+------+
+28 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql>
+mysql>
+mysql> create table cust(id int primary key auto_increment, cname varchar(20));
+Query OK, 0 rows affected (0.46 sec)
+
+mysql> desc cust;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| cname | varchar(20) | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+2 rows in set (0.00 sec)
+
+mysql> insert into cust values(default,'saleel');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into cust values(default,'saleel');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into cust values(default,'saleel');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from cust;
++----+--------+
+| id | cname  |
++----+--------+
+|  1 | saleel |
+|  2 | saleel |
+|  3 | saleel |
++----+--------+
+3 rows in set (0.00 sec)
+
+mysql> insert into cust values(1,'saleel');
+ERROR 1062 (23000): Duplicate entry '1' for key 'cust.PRIMARY'
+mysql> insert into cust values(1,'saleel');
+ERROR 1062 (23000): Duplicate entry '1' for key 'cust.PRIMARY'
+mysql> insert into cust values(default,'saleelnew');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from cust;
++----+-----------+
+| id | cname     |
++----+-----------+
+|  1 | saleel    |
+|  2 | saleel    |
+|  3 | saleel    |
+|  4 | saleelnew |
++----+-----------+
+4 rows in set (0.00 sec)
+
+mysql> insert into cust values(default,saleelnew);
+ERROR 1054 (42S22): Unknown column 'saleelnew' in 'field list'
+mysql> insert into cust values(default,saleelnew);
+ERROR 1054 (42S22): Unknown column 'saleelnew' in 'field list'
+mysql> insert into cust values(default,'saleelnew2');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from cust;
++----+------------+
+| id | cname      |
++----+------------+
+|  1 | saleel     |
+|  2 | saleel     |
+|  3 | saleel     |
+|  4 | saleelnew  |
+|  5 | saleelnew2 |
++----+------------+
+5 rows in set (0.00 sec)
+
+mysql> insert int cust values(default,'saleelnew2');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int cust values(default,'saleelnew2')' at line 1
+mysql> insert int cust values(default,'saleelnew2');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'int cust values(default,'saleelnew2')' at line 1
+mysql> select * from cust;
++----+------------+
+| id | cname      |
++----+------------+
+|  1 | saleel     |
+|  2 | saleel     |
+|  3 | saleel     |
+|  4 | saleelnew  |
+|  5 | saleelnew2 |
++----+------------+
+5 rows in set (0.00 sec)
+
+mysql> insert into cust values(default,'saleelnew2');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from cust;
++----+------------+
+| id | cname      |
++----+------------+
+|  1 | saleel     |
+|  2 | saleel     |
+|  3 | saleel     |
+|  4 | saleelnew  |
+|  5 | saleelnew2 |
+|  6 | saleelnew2 |
++----+------------+
+6 rows in set (0.00 sec)
+
+mysql> insert into cust values('saleelnew2');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into cust values('saleelnew2');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into cust values(default,'saleelnew2');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from cust;
++----+------------+
+| id | cname      |
++----+------------+
+|  1 | saleel     |
+|  2 | saleel     |
+|  3 | saleel     |
+|  4 | saleelnew  |
+|  5 | saleelnew2 |
+|  6 | saleelnew2 |
+|  7 | saleelnew2 |
++----+------------+
+7 rows in set (0.00 sec)
+
+mysql> insert into cust values default,'saleelnew2');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'default,'saleelnew2')' at line 1
+mysql> insert into cust values default,'saleelnew2');
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'default,'saleelnew2')' at line 1
+mysql> insert into cust values(default,'saleelnew2');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from cust;
++----+------------+
+| id | cname      |
++----+------------+
+|  1 | saleel     |
+|  2 | saleel     |
+|  3 | saleel     |
+|  4 | saleelnew  |
+|  5 | saleelnew2 |
+|  6 | saleelnew2 |
+|  7 | saleelnew2 |
+|  8 | saleelnew2 |
++----+------------+
+8 rows in set (0.00 sec)
+
+mysql> alter table cust add c1 int;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc cust
+    -> ;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| cname | varchar(20) | YES  |     | NULL    |                |
+| c1    | int         | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select * from cust;
++----+------------+------+
+| id | cname      | c1   |
++----+------------+------+
+|  1 | saleel     | NULL |
+|  2 | saleel     | NULL |
+|  3 | saleel     | NULL |
+|  4 | saleelnew  | NULL |
+|  5 | saleelnew2 | NULL |
+|  6 | saleelnew2 | NULL |
+|  7 | saleelnew2 | NULL |
+|  8 | saleelnew2 | NULL |
++----+------------+------+
+8 rows in set (0.00 sec)
+
+mysql> insert into cust values(default,'a',1);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into cust values(default,'b',1);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into cust values(default,'c','saleel');
+ERROR 1366 (HY000): Incorrect integer value: 'saleel' for column 'c1' at row 1
+mysql> insert into cust values(default,'c','saleel');
+ERROR 1366 (HY000): Incorrect integer value: 'saleel' for column 'c1' at row 1
+mysql> insert into cust values(default,'f',1);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from cust;
++----+------------+------+
+| id | cname      | c1   |
++----+------------+------+
+|  1 | saleel     | NULL |
+|  2 | saleel     | NULL |
+|  3 | saleel     | NULL |
+|  4 | saleelnew  | NULL |
+|  5 | saleelnew2 | NULL |
+|  6 | saleelnew2 | NULL |
+|  7 | saleelnew2 | NULL |
+|  8 | saleelnew2 | NULL |
+|  9 | a          |    1 |
+| 10 | b          |    1 |
+| 11 | f          |    1 |
++----+------------+------+
+11 rows in set (0.00 sec)
+
+mysql> delete from cust where id=11;
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from cust;
++----+------------+------+
+| id | cname      | c1   |
++----+------------+------+
+|  1 | saleel     | NULL |
+|  2 | saleel     | NULL |
+|  3 | saleel     | NULL |
+|  4 | saleelnew  | NULL |
+|  5 | saleelnew2 | NULL |
+|  6 | saleelnew2 | NULL |
+|  7 | saleelnew2 | NULL |
+|  8 | saleelnew2 | NULL |
+|  9 | a          |    1 |
+| 10 | b          |    1 |
++----+------------+------+
+10 rows in set (0.00 sec)
+
+mysql> insert into cust values(default,'f',1);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from cust;
++----+------------+------+
+| id | cname      | c1   |
++----+------------+------+
+|  1 | saleel     | NULL |
+|  2 | saleel     | NULL |
+|  3 | saleel     | NULL |
+|  4 | saleelnew  | NULL |
+|  5 | saleelnew2 | NULL |
+|  6 | saleelnew2 | NULL |
+|  7 | saleelnew2 | NULL |
+|  8 | saleelnew2 | NULL |
+|  9 | a          |    1 |
+| 10 | b          |    1 |
+| 12 | f          |    1 |
++----+------------+------+
+11 rows in set (0.00 sec)
+
+mysql> truncate table cust;
+Query OK, 0 rows affected (0.12 sec)
+
+mysql> select * from cust;
+Empty set (0.00 sec)
+
+mysql> select * from cust;
+Empty set (0.00 sec)
+
+mysql> desc cust;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| cname | varchar(20) | YES  |     | NULL    |                |
+| c1    | int         | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> select max(c1) R1, count(c1) R2 from cust;
++------+----+
+| R1   | R2 |
++------+----+
+| NULL |  0 |
++------+----+
+1 row in set (0.00 sec)
+
+mysql> select max(c1) R1, count(c1) R2, sum(c1) from cust;
++------+----+---------+
+| R1   | R2 | sum(c1) |
++------+----+---------+
+| NULL |  0 |    NULL |
++------+----+---------+
+1 row in set (0.00 sec)
+
+mysql> select max(c1) R1, count(c1) R2, sum(c1), avg(c1) from cust;
++------+----+---------+---------+
+| R1   | R2 | sum(c1) | avg(c1) |
++------+----+---------+---------+
+| NULL |  0 |    NULL |    NULL |
++------+----+---------+---------+
+1 row in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select f1();
++------+
+| f1() |
++------+
+| NULL |
++------+
+1 row in set (0.00 sec)                                                               mysql> source C:\saleel\pl1.sql            Query OK, 0 rows affected (0.06 sec)                                                  Query OK, 0 rows affected (0.02 sec)                                                  mysql> select f1();                        +------+                                   | f1() |                                   +------+                                   | NULL |                                   +------+                                   1 row in set (0.00 sec)                                                               mysql> select * from cust;                 Empty set (0.00 sec)                                                                  mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select f1();
++------+
+| f1() |
++------+
+|  100 |
++------+
+1 row in set (0.00 sec)
+
+mysql> desc cust;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| cname | varchar(20) | YES  |     | NULL    |                |
+| c1    | int         | YES  |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> insert into cust(cname, c1) values('saleel', f1());
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into cust(cname, c1) values('saleel', f1());
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into cust(cname, c1) values('saleel', f1());
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from cust;
++----+--------+------+
+| id | cname  | c1   |
++----+--------+------+
+|  1 | saleel |  100 |
+|  2 | saleel |  100 |
+|  3 | saleel |  100 |
++----+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> truncate table cust;
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> source c:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select * from cust;
+Empty set (0.00 sec)
+
+mysql> insert into cust(cname, c1) values('saleel', f1());
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from cust;
++----+--------+------+
+| id | cname  | c1   |
++----+--------+------+
+|  1 | saleel |  100 |
++----+--------+------+
+1 row in set (0.00 sec)
+
+mysql> insert into cust(cname, c1) values('saleel', f1());
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into cust(cname, c1) values('saleel', f1());
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select * from cust;
++----+--------+------+
+| id | cname  | c1   |
++----+--------+------+
+|  1 | saleel |  100 |
+|  2 | saleel |  101 |
+|  3 | saleel |  102 |
++----+--------+------+
+3 rows in set (0.00 sec)
+
+mysql> source c:\saleel\pl1.sql
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> call pro1();
++----+--------+------+
+| id | cname  | c1   |
++----+--------+------+
+|  1 | saleel |  100 |
+|  2 | saleel |  101 |
+|  3 | saleel |  102 |
++----+--------+------+
+3 rows in set (0.00 sec)
+
++------+
+| f1() |
++------+
+|   -1 |
++------+
+1 row in set (0.01 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> source c:\saleel\pl1.sql
+Query OK, 0 rows affected (0.03 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select f1();
+ERROR 1415 (0A000): Not allowed to return a result set from a function
+mysql> source c:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select f1();
++------+
+| f1() |
++------+
+| 1000 |
++------+
+1 row in set (0.00 sec)
+
+mysql> source c:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> select f1();
+ERROR 1415 (0A000): Not allowed to return a result set from a function
+mysql> source c:\saleel\pl1.sql
+Query OK, 0 rows affected (0.05 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= -2222;
+end' at line 3
+Query OK, 0 rows affected (0.02 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '();
+        set a := 1000;
+        select a;
+end' at line 3
+mysql> source c:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= -2222;
+end' at line 3
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> source c:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.03 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= -2222;
+end' at line 3
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql>
+mysql> source c:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.01 sec)
+
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> source c:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> set zz := 0;
+ERROR 1193 (HY000): Unknown system variable 'zz'
+mysql> set @zz := 0;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call pro1(@zz);
++-------+
+| f1()  |
++-------+
+| -2222 |
++-------+
+1 row in set (0.00 sec)
+
++------+
+| a    |
++------+
+| 1000 |
++------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select @zz;
++------+
+| @zz  |
++------+
+| 1000 |
++------+
+1 row in set (0.00 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.02 sec)
+
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'default 1001)
+BEGIN
+        select 'hello';
+end' at line 1
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected, 1 warning (0.02 sec)
+
+Query OK, 0 rows affected (0.05 sec)
+
+mysql> source C:\saleel\pl1.sql
+Query OK, 0 rows affected (0.04 sec)
+
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> call pro1(2);
++-------+
+| x + a |
++-------+
+|  1002 |
++-------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql>

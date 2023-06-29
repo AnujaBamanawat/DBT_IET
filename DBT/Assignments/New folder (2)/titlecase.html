@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <script>
+            function f1()
+            {
+                let element=document.getElementById("t1").value
+                let result=element.charAt(0).toUpperCase().concat(element.substr(1).toLowerCase())
+                let e=document.getElementById("p1").innerText=result
+            }
+        </script>
+        <body>
+            <input type="text" id="t1" value="enter string">
+            <button onclick="f1()">titlecase</button>
+            <p id="p1"></p>
+        </body>
+    </head>
+</html> 

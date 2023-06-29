@@ -1,0 +1,36 @@
+select * from dept, emp;
+select * from emp cross join dept;
+
+select * from emp, dept where dept.deptno = emp.deptno;
+ select * from emp inner join dept on dept.deptno = emp.deptno;
+
+select * from emp natural join dept;
+select * from emp inner join dept 
+on dept.deptno = emp.deptno and dept.pwd = emp.pwd;
+
+select * from emp simple join dept using(deptno, pwd);
+select * from dept;
+select distinct deptno from emp;
+
+select ename, emp.deptno, dept.deptno, dname 
+from dept  left outer join emp on emp.deptno = dept.deptno;
+
+select e.ename EmployeeName, m.ename ManagersName from emp e, emp m 
+where e.mgr = m.empno;
+
+
+
+select * from (select ename, deptno R1 from emp) t2 natural join 
+(select dname, deptno R1 from dept) t1;
+
+select * from emp where dayname(hiredate)=dayname(select hiredate from emp where ename='king');
+
+
+
+
+
+
+
+
+
+

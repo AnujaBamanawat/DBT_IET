@@ -1,0 +1,192 @@
+
+C:\Users\IET>mysql --host=192.168.10.150 --port=3306 --user=dac1 --password
+Enter password: *******
+Welcome to the MySQL monitor.
+Commands end with ; or \g.
+Your MySQL connection id is 13
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> \q
+Bye
+
+C:\Users\IET>mysql --host=192.168.10.150 --port=3306 --user=dac1 --password=welcome
+mysql: [Warning] Using a password on the command line interface can be insecure.
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 14
+Server version: 8.0.31 MySQL Community Server - GPL
+
+Copyright (c) 2000, 2022, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| dac1               |
+| information_schema |
+| performance_schema |
++--------------------+
+3 rows in set (0.00 sec)
+
+mysql> select database();
++------------+
+| database() |
++------------+
+| NULL       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> use dac1;
+Database changed
+mysql> select database();
++------------+
+| database() |
++------------+
+| dac1       |
++------------+
+1 row in set (0.00 sec)
+
+mysql> show engines
+    -> ;
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| Engine             | Support | Comment                                                        | Transactions | XA   | Savepoints |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+| MEMORY             | YES     | Hash based, stored in memory, useful for temporary tables      | NO           | NO   | NO         |
+| MRG_MYISAM         | YES     | Collection of identical MyISAM tables                          | NO           | NO   | NO         |
+| CSV                | YES     | CSV storage engine                                             | NO           | NO   | NO         |
+| FEDERATED          | NO      | Federated MySQL storage engine                                 | NULL         | NULL | NULL       |
+| PERFORMANCE_SCHEMA | YES     | Performance Schema                                             | NO           | NO   | NO         |
+| MyISAM             | YES     | MyISAM storage engine                                          | NO           | NO   | NO         |
+| InnoDB             | DEFAULT | Supports transactions, row-level locking, and foreign keys     | YES          | YES  | YES        |
+| ndbinfo            | NO      | MySQL Cluster system information storage engine                | NULL         | NULL | NULL       |
+| BLACKHOLE          | YES     | /dev/null storage engine (anything you write to it disappears) | NO           | NO   | NO         |
+| ARCHIVE            | YES     | Archive storage engine                                         | NO           | NO   | NO         |
+| ndbcluster         | NO      | Clustered, fault-tolerant tables                               | NULL         | NULL | NULL       |
++--------------------+---------+----------------------------------------------------------------+--------------+------+------------+
+11 rows in set (0.00 sec)
+
+mysql> create table student(id int(4), studentName varchar(5) not null, city varchar(10) default 'pune');
+Query OK, 0 rows affected, 1 warning (0.08 sec)
+
+mysql> show warnings;
++---------+------+------------------------------------------------------------------------------+
+| Level   | Code | Message                                                                      |
++---------+------+------------------------------------------------------------------------------+
+| Warning | 1681 | Integer display width is deprecated and will be removed in a future release. |
++---------+------+------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> describe student;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| id          | int         | YES  |     | NULL    |       |
+| studentName | varchar(5)  | NO   |     | NULL    |       |
+| city        | varchar(10) | YES  |     | pune    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.03 sec)
+
+mysql> desc student;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| id          | int         | YES  |     | NULL    |       |
+| studentName | varchar(5)  | NO   |     | NULL    |       |
+| city        | varchar(10) | YES  |     | pune    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student values(1,null, 'baroda');
+ERROR 1048 (23000): Column 'studentName' cannot be null
+mysql> insert into student values(1,'saleel', 'baroda');
+ERROR 1406 (22001): Data too long for column 'studentName' at row 1
+mysql> insert into student values(1,'sam', default);
+Query OK, 1 row affected (0.04 sec)
+
+mysql> insert into student(id, studentName)  value(2,'ram');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from student;
++------+-------------+------+
+| id   | studentName | city |
++------+-------------+------+
+|    1 | sam         | pune |
+|    2 | ram         | pune |
++------+-------------+------+
+2 rows in set (0.00 sec)
+
+mysql> desc student;
++-------------+-------------+------+-----+---------+-------+
+| Field       | Type        | Null | Key | Default | Extra |
++-------------+-------------+------+-----+---------+-------+
+| id          | int         | YES  |     | NULL    |       |
+| studentName | varchar(5)  | NO   |     | NULL    |       |
+| city        | varchar(10) | YES  |     | pune    |       |
++-------------+-------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student values(1,'sam');
+ERROR 1136 (21S01): Column count doesn't match value count at row 1
+mysql> insert into student values(1,'sam',);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near ')' at line 1
+mysql> insert into student values(1,'sam','');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> select * from student;
++------+-------------+------+
+| id   | studentName | city |
++------+-------------+------+
+|    1 | sam         | pune |
+|    2 | ram         | pune |
+|    1 | sam         |      |
++------+-------------+------+
+3 rows in set (0.00 sec)
+
+mysql> insert into student(studentName)  value('abc');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from student;
++------+-------------+------+
+| id   | studentName | city |
++------+-------------+------+
+|    1 | sam         | pune |
+|    2 | ram         | pune |
+|    1 | sam         |      |
+| NULL | abc         | pune |
++------+-------------+------+
+4 rows in set (0.00 sec)
+
+mysql> insert into student values(1,'sam',null);
+Query OK, 1 row affected (0.06 sec)
+
+mysql> select * from student;
++------+-------------+------+
+| id   | studentName | city |
++------+-------------+------+
+|    1 | sam         | pune |
+|    2 | ram         | pune |
+|    1 | sam         |      |
+| NULL | abc         | pune |
+|    1 | sam         | NULL |
++------+-------------+------+
+5 rows in set (0.00 sec)
+
+mysql> insert into student(id)  value(4);
+ERROR 1364 (HY000): Field 'studentName' doesn't have a default value
+mysql> exit
+Bye
+
+C:\Users\IET>

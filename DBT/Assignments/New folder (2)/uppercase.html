@@ -1,0 +1,17 @@
+<html>
+    <head>
+       <script>
+        function f1()
+        {
+            let element=document.getElementById("t1").value
+            let e=document.getElementById("p1")
+            e.innerText=element.toUpperCase()
+        }
+       </script> 
+        <body>
+            <input type="text" id="t1" value="enter string">
+            <button onclick="f1()">uppercase</button>
+            <p id="p1"></p>
+        </body>
+    </head>
+</html>

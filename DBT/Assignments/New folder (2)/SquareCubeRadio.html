@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CubeSquare</title>
+    <script>
+        function f1(choice)
+        { let res;
+            let d=document.getElementById("n1").value
+            let n=parseInt(d)
+            switch(choice){
+                case 'sq':  res=n*n;
+                            break;
+                case 'cu':  res=n*n*n;
+                            break; 
+                case 'asis':  res=n;
+                            break;           
+
+            }
+        document.getElementById("p1").innerHTML=`<h1> ${res}</h1>`
+
+        }
+
+
+
+    </script>
+</head>
+<body>
+   <input type="number" id="n1">
+   <br>
+   <br>
+   <div>
+    <label for="r1">Square</label>
+    <input type="radio" id="r1" name="maths" value="sq" onClick="f1('sq')">
+    <label for="r2">Cube</label>
+    <input type="radio" id="r2" name="maths" value="cu" onClick="f1('cu')">
+    <label for="r3">Asis</label>
+    <input type="radio" id="r3" name="maths" value="asis" onClick="f1('asis')">
+</div>
+    <p id="p1"></p>
+</body>
+</html>

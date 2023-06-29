@@ -1,0 +1,149 @@
+DATETIME FUNCTION:-
+
+➢ DAY(date) DAY() is a synonym for DAYOFMONTH().
+➢ DAYNAME(date) Returns the name of the weekday for date.
+➢ DAYOFMONTH(date) Returns the day of the month for date, in the range 1 to 31
+➢ DAYOFWEEK(date) Returns the weekday index for date (1 = Sunday, 2 = Monday, …, 7 = Saturday).
+➢ DAYOFYEAR(date) Returns the day of the year for date, in the range 1 to 366
+➢ LAST_DAY(date) Takes a date or datetime value and returns the corresponding value for the last day of the 
+   month. Returns NULL if the argument is invalid.
+➢ MONTH(date) Returns the month for date, in the range 1 to 12 for January to December
+➢ MONTHNAME(date) Returns the full name of the month for date.
+➢ YEAR(date) Returns the year in 4 digit
+• SELECT DAYOFWEEK(NOW()), WEEKDAY(NOW());
+• SELECT DAYOFWEEK(ADDDATE(NOW(), INTERVAL 1 DAY)), WEEKDAY(ADDDATE(NOW(), INTERVAL 1 DAY));
+
+➢ WEEKDAY(date) Returns the weekday index for date (0 = Monday, 1 = Tuesday, … 6 = Sunday).
+➢ WEEKOFYEAR(date) Returns the calendar week of the date as a number in the range from 1 to 53.
+➢ QUARTER(date) Returns the quarter of the year for date, in the range 1 to 4.
+➢ HOUR(time) Returns the hour for time. The range of the return value is 0 to 23 for time-of-day values.
+➢ MINUTE(time) Returns the minute for time, in the range 0 to 59.
+➢ SECOND(time) Returns the second for time, in the range 0 to 59.
+➢ DATEDIFF(expr1, expr2) Returns the number of days between two dates or datetimes.
+➢ STR_TO_DATE(str, format) Convert a string to a date.
+• SELECT NOW(), NOW() + INTERVAL 1 DAY, WEEKDAY(NOW() + INTERVAL 1 DAY);
+• SELECT * FROM emp WHERE DAY(hiredate) = 17;
+• SELECT YEAR(hiredate), ( YEAR(hiredate) % 4 = 0 AND YEAR(hiredate) % 100 != 0 ) OR YEAR(hiredate) % 400 = 0 R1 
+  FROM emp ;
+• SELECT STR_TO_DATE('24/05/2022', '%d/%m/%Y');
+
+
+DATE_TIME FORMAT:- 
+
+➢ %a Abbreviated weekday name (Sun-Sat)
+➢ %b Abbreviated month name (Jan-Dec)
+➢ %c Month, numeric (1-12)
+➢ %D Day of month with English suffix (0th, 1st, 2nd, 3rd,  )
+➢ %d Day of month, numeric (01-31)
+➢ %e Day of month, numeric (1-31)
+➢ %f Microseconds (000000-999999)
+➢ %H Hour (00-23)
+➢ %h Hour (01-12)
+➢ %I Hour (01-12)
+➢ %i Minutes, numeric (00-59)
+➢ %j Day of year (001-366)
+➢ %k Hour (0-23)
+➢ %l Hour (1-12)
+➢ %M Month name (January-December)
+➢ %m Month, numeric (01-12)
+➢ %p AM or PM
+➢ %r Time, 12-hour (hh:mm:ss followed by AM or PM)
+➢ %S Seconds (00-59)
+➢ %s Seconds (00-59)
+➢ %T Time, 24-hour (hh:mm:ss)
+➢ %U Week (00-53) where Sunday is the first day of week
+➢ %u Week (00-53) where Monday is the first day of week
+➢ %V Week (01-53) where Sunday is the first day of week, used with %X
+➢ %v Week (01-53) where Monday is the first day of week, used with %x
+➢ %W Weekday name (Sunday-Saturday)
+➢ %w Day of the week (0=Sunday, 6=Saturday)
+➢ %X Year for the week where Sunday is the first day of week, four digits, used with %V
+➢ %x Year for the week where Monday is the first day of week, four digits, used with %v
+➢ %Y Year, numeric, four digits
+➢ %y Year, numeric, two digits
+
+
+STRING FUNCTIONS:-
+
+
+➢ ASCII(str)
+   Returns the numeric value of the leftmost character of the string str. Returns 0 if str is the 
+   empty string. Returns NULL if str is NULL.
+   e.g. SELECT ASCII(ename) FROM emp;
+➢ CHAR(N, , . . .)
+   CHAR() interprets each argument N as an integer and returns a string consisting of the 
+   characters given by the code values of those integers. NULL values are skipped.
+   e.g. SELECT CHAR(65, 66, 67); / SELECT CAST(CHAR(65 66, 67) AS CHAR);
+➢ CONCAT(str1, str2, . . .)
+   Returns the string that results from concatenating the arguments. CONCAT() returns NULL if 
+   any argument is NULL.
+   e.g. SELECT CONCAT('Mr. ' , ename) FROM emp;
+        SELECT CONCAT('My', NULL, 'SQL’); #op will be NULL
+➢ ELT(N, str1, str2, str3, . . .)
+   ELT() returns the Nth element of the list of strings: str1 if N = 1, str2 if N = 2, and so on. 
+   Returns NULL if N is less than 1 or greater than the number of arguments.
+   e.g. SELECT ELT(1, 'Bank', 'Of', 'India', 'Kothrud', 'Pune');
+        SELECT ELT(1, ename, job, sal) FROM emp;
+        SELECT hiredate, ELT(MONTH(hiredate),'Winter', 'Winter', 'Spring', 'Spring', 'Spring','Summer', 'Summer', 'Summer', 'Autumn', 'Autumn', 'Autumn',   	'Winter') R1 FROM emp;
+➢ STRCMP(expr1, expr2)
+   STRCMP() returns 0 if the strings are the same, -1 if the first argument is smaller than the 
+   second according to the current sort order, and 1 otherwise.
+➢ LCASE(str) Returns lower case string. LCASE() is a synonym for LOWER().
+➢ UCASE(str) Returns upper case string. UCASE() is a synonym for UPPER().
+➢ LENGTH(str) Returns the length of the string.
+➢ LPAD(str, len, padstr) Returns the string str, left-padded with the string padstr to a length of len characters.
+➢ RPAD(str, len, padstr) Returns the string str, right-padded with the string padstr to a length of len characters.
+➢ REPEAT(str, count)
+   Returns a string consisting of the string str repeated count times. If count is less than 1, 
+   returns an empty string. Returns NULL if str or count are NULL.
+➢ LEFT(str, len) Returns the leftmost len characters from the string str, or NULL if any argument is NULL.
+➢ RIGHT(str, len) Returns the rightmost len characters from the string str, or NULL if any argument is NULL.
+➢ LTRIM(str) Returns the string str with leading space characters removed.
+➢ RTRIM(str) Returns the string str with trailing space characters removed.
+➢ TRIM(str) Returns the string str with leading and trailing space characters removed.
+➢ BINARY value Convert a value to a binary string.
+➢ INSTR(str, substr) Returns the position of the first occurrence of substring substr in string str.
+➢ REPLACE(str, from_str, to_str)
+   Returns the string str with all occurrences of the string from_str replaced by the string 
+   to_str. REPLACE() performs a case-sensitive match when searching for from_str.
+➢ REVERSE(str) Returns the string str with the order of the characters reversed.
+➢  SUBSTR(str, pos, len)
+    SUBSTR() is a synonym for SUBSTRING().
+➢ MID(str, pos, len) MID function is a synonym for SUBSTRING.
+
+
+MATHS FUNCTION:- 
+
+➢ ABS(x) Returns the absolute value of X.
+➢ CEIL(x) CEIL() is a synonym for CEILING().
+➢ CEILING(x) Returns CEIL value.
+➢ FLOOR(x) Returns FLOOR value.
+➢ MOD(n, m),n % m,n MOD m
+   Returns the remainder of N divided by M. MOD(N,0) returns NULL.
+➢ POWER(x, y) This is a synonym for POW().
+➢ RAND() Returns a random floating-point value
+➢ ROUND(x) ROUND(x, d)
+  Rounds the argument X to D decimal places. The rounding algorithm depends on the data 
+  type of X. D defaults to 0 if not specified. D can be negative to cause D digits left of the 
+  decimal point of the value X to become zero.
+➢ TRUNCATE(x, d)
+   Returns the number X, truncated to D decimal places. If D is 0, the result has no decimal 
+   point or fractional part. D can be negative to cause D digits left of the decimal point of the 
+   value X to become zero.
+
+
+
+
+WINDOW FUNCTION:-
+
+➢ RANK() OVER(PARTITION BY expr [, expr] . . . ORDER BY expr [ASC | DESC] [, expr [ASC | DESC]] . . . )
+➢ DENSE_RANK() OVER(PARTITION BY expr [, expr] . . . ORDER BY expr [ASC|DESC] [, expr [ASC | DESC]] . . . )
+➢ ROW_NUMBER() OVER([ PARTITION BY expr [, expr] . . . ORDER BY expr [ASC|DESC] [, expr [ASC | DESC]] . . . ] )
+
+• SELECT ROW_NUMBER() OVER() R1, emp.* FROM emp;
+• SELECT RANK() OVER(PARTITION BY job ORDER BY sal) R1, ename, sal, job FROM emp;
+• SELECT DENSE_RANK() OVER(PARTITION BY job ORDER BY sal) R1, ename, sal, job FROM emp;
+• SELECT ordid, total, SUM(total) OVER(ORDER BY ordid) FROM ord;
+• SELECT * FROM (SELECT ROW_NUMBER() OVER() R1, emp.* FROM emp) d WHERE R1> (SELECT COUNT(*) - 2 FROM
+emp);
+

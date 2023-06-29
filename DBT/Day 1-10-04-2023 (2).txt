@@ -1,0 +1,183 @@
+
+-------+------+------+-----+---------+----------------+
+ c1    | int  | NO   | PRI | NULL    | auto_increment |
+ c2    | int  | YES  |     | NULL    |                |
+-------+------+------+-----+---------+----------------+
+
+insert into x1 values(1, 1);
+
+insert into x1(c1, c2) values(2, 2);
+
+insert into x1 values(default, 1);
+
+insert into x1(c2) values(4);
+
+insert into x1(c1, c2) values(200, 2);
+
+insert into x1(c2) values(5);
+
+
+primary key - column level
+
+create table t1(c1 int primary key , c2 varchar(20));
+
+
+primary key - table level
+
+create table t2(c1 int ,c2 varchar(20), primary key(c1));
+
+not null + unique - table level
+
+create table t3(c1 int not null ,c2 varchar(20), unique key(c1));
+
+------------------------------------------------------------
+
+1. primary key
+2. not null + unique - table level
+
+create table t4(c1 int ,c2 varchar(20) not null, primary key(c1), unique key(c2));
+
+
+create table employee(empno int primary key, ename varchar(20), PAN varchar(20) unique key, phone varchar(12) unique, emailID varchar(40) generated always as (concat(ename, '@gmail.com')));
+
+
+Check constraint
+
+create table t7 (id int, salary int, check (salary >= 5000));
+
+insert into t7 values(1, 6000),
+insert into t7 values(2, 4000);
+
+
+
+create table t8 (id int, salary int check (salary >= 5000));
+
+
+
+create table t11 (c1 int primary key, c2 int);
+
+create table t12 (c1 int unique key, c2 int);
+
+create table t13 (c1 int, c2 int check (c2 < 5000) );
+
+create table t14 (c1 int constraint uni_c1_t14 unique, c2 int);
+
+
+
+
+
+
+
+
+--------------------------------------------------------------
+
+
+| KEY_COLUMN_USAGE                      |
+| KEYWORDS                              |
+| OPTIMIZER_TRACE                       |
+| PARAMETERS                            |
+| PARTITIONS                            |
+| PLUGINS                               |
+| PROCESSLIST                           |
+| PROFILING                             |
+| REFERENTIAL_CONSTRAINTS               |
+| RESOURCE_GROUPS                       |
+| ROLE_COLUMN_GRANTS                    |
+| ROLE_ROUTINE_GRANTS                   |
+| ROLE_TABLE_GRANTS                     |
+| ROUTINES                              |
+| SCHEMA_PRIVILEGES                     |
+| SCHEMATA                              |
+| SCHEMATA_EXTENSIONS                   |
+| ST_GEOMETRY_COLUMNS                   |
+| ST_SPATIAL_REFERENCE_SYSTEMS          |
+| ST_UNITS_OF_MEASURE                   |
+| STATISTICS                            |
+| TABLE_CONSTRAINTS                     |
+| TABLE_CONSTRAINTS_EXTENSIONS          |
+| TABLE_PRIVILEGES                      |
+| TABLES                                |
+| TABLES_EXTENSIONS                     |
+| TABLESPACES                           |
+| TABLESPACES_EXTENSIONS                |
+| TRIGGERS                              |
+| USER_ATTRIBUTES                       |
+| USER_PRIVILEGES                       |
+| VIEW_ROUTINE_USAGE                    |
+| VIEW_TABLE_USAGE                      |
+| VIEWS                                 |
++---------------------------------------+
+79 rows in set (0.00 sec)
+
+mysql>
+
+-----------------------------------------
+
+
+mysql> select TABLE_NAME, CONSTRAINT_TYPE, CONSTRAINT_NAME from information_schema.table_constraints where CONSTRAINT_SCHEMA = 'db3';
++------------+-----------------+-----------------+
+| TABLE_NAME | CONSTRAINT_TYPE | CONSTRAINT_NAME |
++------------+-----------------+-----------------+
+| t13        | CHECK           | t13_chk_1       |
+| t14        | UNIQUE          | uni_c1_t14      |
++------------+-----------------+-----------------+
+2 rows in set (0.00 sec)
+
+mysql> desc t14;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  | UNI | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql> alter table t14 drop index c1;
+ERROR 1091 (42000): Can't DROP 'c1'; check that column/key exists
+mysql> alter table t14 drop index uni_c1_t14;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc t14;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| c1    | int  | YES  |     | NULL    |       |
+| c2    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+2 rows in set (0.00 sec)
+
+mysql>
+mysql>
+mysql>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

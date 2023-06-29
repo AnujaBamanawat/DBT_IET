@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script>
+            function handler1(choice)
+            {
+               let n=parseInt(document.getElementById("i1").value)
+               let result
+               switch (choice) {
+                   case "Square":result=n*n
+                                 break;
+                   case "Cube":result=n*n*n
+                                 break;
+                   case "as it as":result=n
+                                    break;              
+               
+                   default:result=0
+                       break;
+               }
+               document.getElementById("p1").innerHTML=`<h1>${result}</h1>`
+            }
+            </script>
+    </head>
+    <body>
+        
+        <input type="number" id="i1"/>
+        <label for="r1" >Square: </label> <input onclick="handler1('Square')" type="radio" id="r1" name="maths" value="Square"/>
+        <label for="r2" >Cube: </label><input onclick="handler1('Cube')" type="radio" id="r2" name="maths" value="Cube"/>
+        <label  for="r3">as it is: </label><input onclick="handler1('as it as')" type="radio" id="r3" name="maths" value="as it is"/>
+        <p id="p1"></p>
+    </body>
+</html>

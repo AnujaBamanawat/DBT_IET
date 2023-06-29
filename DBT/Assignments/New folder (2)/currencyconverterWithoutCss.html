@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <script>
+            function fun()
+            {
+                var num=parseInt(document.getElementById("cur").value);
+                var from=document.getElementById("from").value
+                var to=document.getElementById("to").value
+                if(from==to)
+                {
+
+                }
+                else if(from=="rs"&&to=="doll")
+                       num=num*1.0/84;
+                else if(from=="doll"&&to=="rs")
+                       num=num*82;
+                else if(from=="rs"&&to=="euro")
+                       num=num*0.011;
+                else if(from=="euro"&&to=="rs")
+                       num=num*90.06;
+                else if(from=="doll"&&to=="euro")
+                       num=num*0.907;
+                else if(from=="euro"&&to=="doll")
+                        num=num*1.10;
+                document.getElementById("ans").innerHTML=num;
+            }
+        </script>
+        <body>
+            Amount:<input type="number" id="cur">
+            <select id="from" onchange="fun()">
+                <option>from</option>
+                <option value="euro">&#8364</option>
+                <option value="rs">&#8377</option>
+                <option value="doll">$</option>
+                
+            </select>
+
+            <select id="to" onchange="fun()">
+                <option>to</option>
+                <option value="euro">&#8364</option>
+                <option value="rs">&#8377</option>
+                <option value="doll">$</option>
+            </select>
+
+            <p id="ans"></p>
+        </body>
+    </head>
+</html>
