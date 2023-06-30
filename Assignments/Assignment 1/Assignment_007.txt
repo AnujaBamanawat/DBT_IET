@@ -1,0 +1,405 @@
+1.	List all student.
+
+
+mysql> select * from student;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+|  1 | saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com   |
+|  2 | omkar     | rakde    | 1969-10-25 | omkar.rakde@gmail.com    |
+|  3 | ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com     |
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com    |
+|  5 | ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com    |
+|  6 | lala      | prasad   | 1980-12-01 | lala.prasad@gmail.com    |
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com  |
+|  8 | vrushali  | bagde    | 1984-12-29 | vrushali.bagde@gmail.com |
+|  9 | vasant    | khande   | 1992-10-26 | vasant.khande@gmail.com  |
+| 10 | nitish    | patil    | 1990-10-26 | nitish.patil@gmail.com   |
+| 11 | neel      | save     | 1975-10-30 | neel.save@gmail.com      |
+| 12 | deep      | save     | 1986-11-30 | deep.save@gmail.com      |
+| 13 | nrupali   | save     | 1981-12-01 | nrupali.save@gmail.com   |
+| 14 | supriya   | karnik   | 1983-12-15 | supriya.karnik@gmail.com |
+| 15 | bandish   | karnik   | 1987-12-30 | bandish.karnik@gmail.com |
+| 16 | sangita   | karnik   | 1990-12-01 | sangita.karnik@gmail.com |
+| 17 | sangita   | menon    | 1989-10-26 | sangita.menon@gmail.com  |
+| 18 | rahul     | shah     | 1982-06-12 | rahul.shah@gmail.com     |
+| 19 | bhavin    | patel    | 1983-11-13 | bhavin.patel@gmail.com   |
+| 20 | kaushal   | patil    | 1982-07-30 | kaushal.patil@gmail.com  |
+| 21 | pankaj    | gandhi   | 1982-07-30 | pankaj.gandhi@gmail.com  |
+| 22 | rajan     | patel    | 1982-07-30 | rajan.patel@gmail.com    |
+| 23 | bhavin    | patel    | 1982-07-30 | bhavin.patel@gmail.com   |
+| 24 | mukesh    | bhavsar  | 1982-07-30 | mukesh.bhavsar@gmail.com |
+| 25 | dilu      | khande   | 1982-07-30 | dilu.khande@gmail.com    |
+| 26 | sonam     | khan     | 1972-05-13 | sonam.khan@gmail.com     |
+| 27 | rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com    |
+| 28 | raj       | bubber   | 1982-02-28 | raj.bubber@gmail.com     |
+| 29 | raj       | NULL     | NULL       | NULL                     |
++----+-----------+----------+------------+--------------------------+
+29 rows in set (0.02 sec)
+
+2.	List nameFirst ,namelast of all student.
+
+mysql> select namefirst, namelast from student;
++-----------+----------+
+| namefirst | namelast |
++-----------+----------+
+| saleel    | bagde    |
+| omkar     | rakde    |
+| ulka      | joshi    |
+| rahul     | patil    |
+| ruhan     | bagde    |
+| lala      | prasad   |
+| sharmin   | bagde    |
+| vrushali  | bagde    |
+| vasant    | khande   |
+| nitish    | patil    |
+| neel      | save     |
+| deep      | save     |
+| nrupali   | save     |
+| supriya   | karnik   |
+| bandish   | karnik   |
+| sangita   | karnik   |
+| sangita   | menon    |
+| rahul     | shah     |
+| bhavin    | patel    |
+| kaushal   | patil    |
+| pankaj    | gandhi   |
+| rajan     | patel    |
+| bhavin    | patel    |
+| mukesh    | bhavsar  |
+| dilu      | khande   |
+| sonam     | khan     |
+| rohit     | patil    |
+| raj       | bubber   |
+| raj       | NULL     |
++-----------+----------+
+29 rows in set (0.00 sec)
+
+3.	Display student information of the student whose student ID is 10.
+
+mysql> select * from student where id=10;
++----+-----------+----------+------------+------------------------+
+| ID | namefirst | namelast | DOB        | emailID                |
++----+-----------+----------+------------+------------------------+
+| 10 | nitish    | patil    | 1990-10-26 | nitish.patil@gmail.com |
++----+-----------+----------+------------+------------------------+
+1 row in set (0.00 sec)
+
+4.	List of various faculties available from faculty table.
+
+mysql> select * from faculty;
++----+-----------+----------+------------+------------------------+
+| ID | namefirst | namelast | DOB        | emailID                |
++----+-----------+----------+------------+------------------------+
+|  1 | prachi    | gupta    | 1974-06-12 | prachi.gupta@gmail.com |
+|  2 | ketan     | shukla   | 1972-10-25 | ketan.shukla@gmail.com |
+|  3 | kiran     | dev      | 1971-10-25 | kiran.dev@gmail.com    |
+|  4 | parag     | patil    | 1972-10-31 | parag.patil@gmail.com  |
++----+-----------+----------+------------+------------------------+
+4 rows in set (0.00 sec)
+
+5.	List all student having ‘A’ as second letter in their namefirst.
+
+mysql> select * from student where substr(namefirst,2,1)='A';
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+|  1 | saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com   |
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com    |
+|  6 | lala      | prasad   | 1980-12-01 | lala.prasad@gmail.com    |
+|  9 | vasant    | khande   | 1992-10-26 | vasant.khande@gmail.com  |
+| 15 | bandish   | karnik   | 1987-12-30 | bandish.karnik@gmail.com |
+| 16 | sangita   | karnik   | 1990-12-01 | sangita.karnik@gmail.com |
+| 17 | sangita   | menon    | 1989-10-26 | sangita.menon@gmail.com  |
+| 18 | rahul     | shah     | 1982-06-12 | rahul.shah@gmail.com     |
+| 20 | kaushal   | patil    | 1982-07-30 | kaushal.patil@gmail.com  |
+| 21 | pankaj    | gandhi   | 1982-07-30 | pankaj.gandhi@gmail.com  |
+| 22 | rajan     | patel    | 1982-07-30 | rajan.patel@gmail.com    |
+| 28 | raj       | bubber   | 1982-02-28 | raj.bubber@gmail.com     |
+| 29 | raj       | NULL     | NULL       | NULL                     |
++----+-----------+----------+------------+--------------------------+
+13 rows in set (0.00 sec)
+
+6.	List all student having letter ‘A’ in their namefirst.
+
+7.	Display the details of the student whoseDOBis '1986-12-14'.
+
+mysql> select * from student where dob='1986-12-14';
++----+-----------+----------+------------+-------------------------+
+| ID | namefirst | namelast | DOB        | emailID                 |
++----+-----------+----------+------------+-------------------------+
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com |
++----+-----------+----------+------------+-------------------------+
+1 row in set (0.00 sec)
+
+8.	List all student having ‘R’ as first letter in their namefirst.
+
+mysql> select * from student where substr(namefirst,1,1)='R';
++----+-----------+----------+------------+-----------------------+
+| ID | namefirst | namelast | DOB        | emailID               |
++----+-----------+----------+------------+-----------------------+
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com |
+|  5 | ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com |
+| 18 | rahul     | shah     | 1982-06-12 | rahul.shah@gmail.com  |
+| 22 | rajan     | patel    | 1982-07-30 | rajan.patel@gmail.com |
+| 27 | rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com |
+| 28 | raj       | bubber   | 1982-02-28 | raj.bubber@gmail.com  |
+| 29 | raj       | NULL     | NULL       | NULL                  |
++----+-----------+----------+------------+-----------------------+
+7 rows in set (0.00 sec)
+
+9.	Display the namefirst, lastname from student relation with Customized column headings.
+
+
+10.	Display all students in ascending order of their DOB.
+
+mysql> select * from student order by dob;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+| 29 | raj       | NULL     | NULL       | NULL                     |
+|  2 | omkar     | rakde    | 1969-10-25 | omkar.rakde@gmail.com    |
+|  3 | ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com     |
+| 26 | sonam     | khan     | 1972-05-13 | sonam.khan@gmail.com     |
+| 11 | neel      | save     | 1975-10-30 | neel.save@gmail.com      |
+| 27 | rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com    |
+|  6 | lala      | prasad   | 1980-12-01 | lala.prasad@gmail.com    |
+| 13 | nrupali   | save     | 1981-12-01 | nrupali.save@gmail.com   |
+| 28 | raj       | bubber   | 1982-02-28 | raj.bubber@gmail.com     |
+| 18 | rahul     | shah     | 1982-06-12 | rahul.shah@gmail.com     |
+| 20 | kaushal   | patil    | 1982-07-30 | kaushal.patil@gmail.com  |
+| 21 | pankaj    | gandhi   | 1982-07-30 | pankaj.gandhi@gmail.com  |
+| 22 | rajan     | patel    | 1982-07-30 | rajan.patel@gmail.com    |
+| 23 | bhavin    | patel    | 1982-07-30 | bhavin.patel@gmail.com   |
+| 24 | mukesh    | bhavsar  | 1982-07-30 | mukesh.bhavsar@gmail.com |
+| 25 | dilu      | khande   | 1982-07-30 | dilu.khande@gmail.com    |
+|  4 | rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com    |
+| 19 | bhavin    | patel    | 1983-11-13 | bhavin.patel@gmail.com   |
+| 14 | supriya   | karnik   | 1983-12-15 | supriya.karnik@gmail.com |
+|  5 | ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com    |
+|  1 | saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com   |
+|  8 | vrushali  | bagde    | 1984-12-29 | vrushali.bagde@gmail.com |
+| 12 | deep      | save     | 1986-11-30 | deep.save@gmail.com      |
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com  |
+| 15 | bandish   | karnik   | 1987-12-30 | bandish.karnik@gmail.com |
+| 17 | sangita   | menon    | 1989-10-26 | sangita.menon@gmail.com  |
+| 10 | nitish    | patil    | 1990-10-26 | nitish.patil@gmail.com   |
+| 16 | sangita   | karnik   | 1990-12-01 | sangita.karnik@gmail.com |
+|  9 | vasant    | khande   | 1992-10-26 | vasant.khande@gmail.com  |
++----+-----------+----------+------------+--------------------------+
+29 rows in set (0.00 sec)
+
+
+11.	Display two records of student whose name starts with the letter ‘S’
+
+mysql> select * from student where  substr(namefirst,1,1)='s' limit 2;
++----+-----------+----------+------------+-------------------------+
+| ID | namefirst | namelast | DOB        | emailID                 |
++----+-----------+----------+------------+-------------------------+
+|  1 | saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com  |
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com |
++----+-----------+----------+------------+-------------------------+
+2 rows in set (0.00 sec)
+
+12.	Display the student detail whose DOB is ‘1986-12-14’.
+
+mysql> select * from student where dob='1986-12-14';
++----+-----------+----------+------------+-------------------------+
+| ID | namefirst | namelast | DOB        | emailID                 |
++----+-----------+----------+------------+-------------------------+
+|  7 | sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com |
++----+-----------+----------+------------+-------------------------+
+1 row in set (0.00 sec)
+
+
+13.	Display all modules whose module duration is 1 (use modules table).
+
+mysql> select * from modules where duration=1;
++----+----------+----------+
+| ID | name     | duration |
++----+----------+----------+
+|  1 | Oracle   |        1 |
+|  2 | PHP      |        1 |
+|  3 | MySQL    |        1 |
+|  4 | Node     |        1 |
+|  5 | C++      |        1 |
+|  6 | C        |        1 |
+|  9 | MongoDB  |        1 |
+| 11 | Hive     |        1 |
+| 12 | Python   |        1 |
+| 13 | Aptitude |        1 |
++----+----------+----------+
+10 rows in set (0.00 sec)
+
+
+14.	Display all batches whose sitting capacity is 80 students (use course_batches table).
+
+mysql> select * from course_batches where capacity=80;
++----+---------+----------+------------+------------+----------+
+| ID | name    | courseID | starton    | endson     | capacity |
++----+---------+----------+------------+------------+----------+
+|  1 | Batch1  |        1 | 2016-02-01 | 2016-08-31 |       80 |
+|  6 | Batch6  |        1 | 2015-02-01 | 2015-08-31 |       80 |
+| 11 | Batch11 |        1 | 2017-08-01 | 2018-02-28 |       80 |
+| 16 | Batch16 |        1 | 2014-08-01 | 2015-02-28 |       80 |
+| 21 | Batch21 |        1 | 2015-08-01 | 2016-02-28 |       80 |
++----+---------+----------+------------+------------+----------+
+5 rows in set (0.00 sec)
+
+
+15.	Display all student qualification who have done’ BE’ and secured marks more than 70. (use student_qualifications table).
+
+mysql> select * from student_qualifications where marks>70 and name='BE';
++----+-----------+------+-------------+------------------------+-------+------+
+| ID | studentId | name | college     | university             | marks | year |
++----+-----------+------+-------------+------------------------+-------+------+
+| 18 |         6 | BE   | Indiana     | University of Chicago  | 87    | 2015 |
+| 21 |         7 | BE   | Kentucky    | Harvard University     | 97    | 2017 |
+| 27 |         9 | BE   | Kansas      | Columbia University    | 87    | 2018 |
+| 48 |        16 | BE   | Mississippi | University of Michigan | 76    | 2018 |
+| 54 |        18 | BE   | Maryland    | Harvard University     | 75    | 2017 |
+| 60 |        20 | BE   | Maryland    | Columbia University    | 72    | 2019 |
+| 72 |        24 | BE   | Kentucky    | Harvard University     | 97    | 2017 |
+| 75 |        25 | BE   | Kentucky    | Harvard University     | 97    | 2017 |
++----+-----------+------+-------------+------------------------+-------+------+
+8 rows in set (0.00 sec)
+
+16.	Display all student qualification who have done’ BE’ and graduated in the year 2017. (use student_qualifications table).
+
+mysql> select * from student_qualifications where year=2017 and name='BE';
++----+-----------+------+----------+-------------------------+-------+------+
+| ID | studentId | name | college  | university              | marks | year |
++----+-----------+------+----------+-------------------------+-------+------+
+|  9 |         3 | BE   | Florida  | University of Florida   | 67    | 2017 |
+| 21 |         7 | BE   | Kentucky | Harvard University      | 97    | 2017 |
+| 45 |        15 | BE   | Alabama  | Pennsylvania University | 65    | 2017 |
+| 54 |        18 | BE   | Maryland | Harvard University      | 75    | 2017 |
+| 72 |        24 | BE   | Kentucky | Harvard University      | 97    | 2017 |
+| 75 |        25 | BE   | Kentucky | Harvard University      | 97    | 2017 |
++----+-----------+------+----------+-------------------------+-------+------+
+6 rows in set (0.00 sec)
+
+
+17.	Display all student qualification who have done’ BE’ and graduated in the year 2017 and scored marks more than 80. (use student_qualifications table).
+
+mysql> select * from student_qualifications where year=2017 and name='BE' and marks>80;
++----+-----------+------+----------+--------------------+-------+------+
+| ID | studentId | name | college  | university         | marks | year |
++----+-----------+------+----------+--------------------+-------+------+
+| 21 |         7 | BE   | Kentucky | Harvard University | 97    | 2017 |
+| 72 |        24 | BE   | Kentucky | Harvard University | 97    | 2017 |
+| 75 |        25 | BE   | Kentucky | Harvard University | 97    | 2017 |
++----+-----------+------+----------+--------------------+-------+------+
+3 rows in set (0.00 sec)
+
+18.	Display faculty qualification who have done ‘BE’ from ‘Harvard University’(use faculty_qualifications table)
+
+mysql> select * from faculty_qualifications where name='BE' and university='Harvard University';
++----+-----------+------+---------+--------------------+-------+------+
+| ID | facultyId | name | college | university         | marks | year |
++----+-----------+------+---------+--------------------+-------+------+
+|  3 |         1 | BE   | Arizona | Harvard University | 68    | 2018 |
++----+-----------+------+---------+--------------------+-------+------+
+1 row in set (0.00 sec)
+
+19.	Display all courses whose course duration is 6 months.(use course table)
+mysql> select * from course where duration=6;
++----+--------+----------+---------------------------------+
+| ID | name   | duration | summary                         |
++----+--------+----------+---------------------------------+
+|  1 | PG-DAC | 6        | This course is designed by CDAC |
+|  2 | DBDA   | 6        | This course is designed by CDAC |
+|  6 | DMC    | 6        | This course is designed by CDAC |
+|  7 | DSSD   | 6        | This course is designed by CDAC |
++----+--------+----------+---------------------------------+
+4 rows in set (0.00 sec)
+
+
+20. Display module details whose module duration is between 1 and 2, arrange the data in ascending order of module duration. (use module table)
+
+mysql> select * from course where duration between 1 and 2 order by duration;
++----+---------+----------+---------------------------------+
+| ID | name    | duration | summary                         |
++----+---------+----------+---------------------------------+
+|  3 | Pre-DAC | 2        | This course is designed by CDAC |
++----+---------+----------+---------------------------------+
+1 row in set (0.00 sec)
+
+
+21.	Display all student with their voting rights, if the student is below 1980 then print the message “*The student can vote” else print “The student cannot vote”.
+
+mysql> select if(year(dob)<1980, "The student can vote", "Can not vote") from student;
++------------------------------------------------------------+
+| if(year(dob)<1980, "The student can vote", "Can not vote") |
++------------------------------------------------------------+
+| Can not vote                                               |
+| The student can vote                                       |
+| The student can vote                                       |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| The student can vote                                       |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| Can not vote                                               |
+| The student can vote                                       |
+| The student can vote                                       |
+| Can not vote                                               |
+| Can not vote                                               |
++------------------------------------------------------------+
+29 rows in set (0.00 sec)
+
+22.	Display all distinct universities from student_qualifications table.
+
+mysql> select distinct(university) from student_qualifications;
++-------------------------+
+| university              |
++-------------------------+
+| Stanford University     |
+| Harvard University      |
+| University of Chicago   |
+| Yale University         |
+| California University   |
+| University of Florida   |
+| Pennsylvania University |
+| Columbia University     |
+| University of Michigan  |
+| University of Ohio      |
+| University Maryland     |
++-------------------------+
+11 rows in set (0.00 sec)
+
+23.	Display the second highest marks scored by any student in ‘BE’. 
+
+24.	Display the second lowest marks scored by any student in ‘BE’.
+
+25.	Display last 7 student
+
+mysql> select * from student limit 22,7;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+| 23 | bhavin    | patel    | 1982-07-30 | bhavin.patel@gmail.com   |
+| 24 | mukesh    | bhavsar  | 1982-07-30 | mukesh.bhavsar@gmail.com |
+| 25 | dilu      | khande   | 1982-07-30 | dilu.khande@gmail.com    |
+| 26 | sonam     | khan     | 1972-05-13 | sonam.khan@gmail.com     |
+| 27 | rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com    |
+| 28 | raj       | bubber   | 1982-02-28 | raj.bubber@gmail.com     |
+| 29 | raj       | NULL     | NULL       | NULL                     |
++----+-----------+----------+------------+--------------------------+
+7 rows in set (0.00 sec)

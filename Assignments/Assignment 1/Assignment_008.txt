@@ -1,0 +1,71 @@
+1.	Count total number of students.
+mysql> select count(id) from student;
++-----------+
+| count(id) |
++-----------+
+|        29 |
++-----------+
+1 row in set (0.00 sec)
+
+2.	Count total number of students who are born in 1986.
+mysql> select count(id) from student where year(dob)=1980;
++-----------+
+| count(id) |
++-----------+
+|         1 |
++-----------+
+1 row in set (0.00 sec)
+
+3.	Count total number of students whose namefirst starts with the letter ‘B’.
+
+mysql> select namefirst, count(namefirst) from student where namefirst like 'b%';
++-----------+------------------+
+| namefirst | count(namefirst) |
++-----------+------------------+
+| bandish   |                3 |
++-----------+------------------+
+1 row in set (0.00 sec)
+
+4.	Count total number student who were born in ‘July.
+
+
+mysql> select count(id) from student where monthname(dob)='july';
++-----------+
+| count(id) |
++-----------+
+|         6 |
++-----------+
+1 row in set (0.00 sec)
+
+5.	Display studentID and count the student who are having more than two phones.
+
+mysql> select studentID, count(*) from student_phone group by studentID having count(studentID) > 2;
++-----------+----------+
+| studentID | count(*) |
++-----------+----------+
+|         6 |        3 |
+|        13 |        4 |
++-----------+----------+
+2 rows in set (0.00 sec)
+
+6.	Count unique universities from student_qualifications table.
+
+mysql> select distinct(university) from student_qualifications;
++-------------------------+
+| university              |
++-------------------------+
+| Stanford University     |
+| Harvard University      |
+| University of Chicago   |
+| Yale University         |
+| California University   |
+| University of Florida   |
+| Pennsylvania University |
+| Columbia University     |
+| University of Michigan  |
+| University of Ohio      |
+| University Maryland     |
++-------------------------+
+11 rows in set (0.00 sec)
+
+7.	Display the university name and the count of those students who have done ‘BE’

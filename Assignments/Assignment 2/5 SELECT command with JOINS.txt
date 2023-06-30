@@ -1,0 +1,382 @@
+1.	Display Name of the salesperson, customer name and amount of sales. 
+
+mysql> select s.sname , c.cname, o.amt from salespeople s inner join customers c on s.snum=c.snum inner join orders o on o.snum=c.snum;
++---------+---------+---------+
+| sname   | cname   | amt     |
++---------+---------+---------+
+| Rajan   | Santosh |  767.19 |
+| Rajan   | Santosh |    4723 |
+| Rajan   | Santosh | 9891.88 |
+| Rajan   | Santosh | 3721.53 |
+| Rajan   | Santosh | 1729.67 |
+| Rajan   | Santosh |  767.19 |
+| Rajan   | Santosh | 9891.88 |
+| Rajan   | Santosh | 3721.53 |
+| Rajan   | Santosh |     125 |
+| Rajan   | Santosh |     125 |
+| Alax    | Joe     |   75.75 |
+| Alax    | Joe     | 1713.23 |
+| Alax    | Joe     | 3455.78 |
+| Alax    | Joe     | 1245.98 |
+| Alax    | Joe     | 1713.23 |
+| Alax    | Joe     | 3455.78 |
+| Alax    | Joe     | 1245.98 |
+| Alax    | Joe     |     500 |
+| Alax    | Joe     |     145 |
+| Alax    | Joe     |    1200 |
+| Natasha | Raj     | 5160.45 |
+| Natasha | Raj     | 1309.95 |
+| Natasha | Raj     |   734.5 |
+| Natasha | Raj     |    4723 |
+| Natasha | Raj     | 1309.95 |
+| Natasha | Raj     |   734.5 |
+| Natasha | Raj     |     522 |
+| Natasha | Raj     |     245 |
+| Natasha | Raj     |     600 |
+| Natasha | Grass   | 5160.45 |
+| Natasha | Grass   | 1309.95 |
+| Natasha | Grass   |   734.5 |
+| Natasha | Grass   |    4723 |
+| Natasha | Grass   | 1309.95 |
+| Natasha | Grass   |   734.5 |
+| Natasha | Grass   |     522 |
+| Natasha | Grass   |     245 |
+| Natasha | Grass   |     600 |
+| Rajan   | Raja    |  767.19 |
+| Rajan   | Raja    |    4723 |
+| Rajan   | Raja    | 9891.88 |
+| Rajan   | Raja    | 3721.53 |
+| Rajan   | Raja    | 1729.67 |
+| Rajan   | Raja    |  767.19 |
+| Rajan   | Raja    | 9891.88 |
+| Rajan   | Raja    | 3721.53 |
+| Rajan   | Raja    |     125 |
+| Rajan   | Raja    |     125 |
+| Monika  | Jackson |  1900.1 |
+| Monika  | Jackson |  1900.1 |
+| Monika  | Jackson |   75.75 |
+| Monika  | Jackson |     535 |
+| James   | William |   18.69 |
+| James   | William | 1098.16 |
+| James   | William |   18.69 |
+| James   | William | 5160.45 |
+| James   | William | 1098.16 |
+| James   | William | 1729.67 |
+| James   | William |    3434 |
+| James   | William |     457 |
+| James   | William |     138 |
+| James   | William |     980 |
+| James   | William |    2133 |
+| James   | William |    1000 |
+| James   | William |    1500 |
+| James   | William |     790 |
+| James   | William |    1100 |
+| James   | William |    1350 |
+| James   | Smith   |   18.69 |
+| James   | Smith   | 1098.16 |
+| James   | Smith   |   18.69 |
+| James   | Smith   | 5160.45 |
+| James   | Smith   | 1098.16 |
+| James   | Smith   | 1729.67 |
+| James   | Smith   |    3434 |
+| James   | Smith   |     457 |
+| James   | Smith   |     138 |
+| James   | Smith   |     980 |
+| James   | Smith   |    2133 |
+| James   | Smith   |    1000 |
+| James   | Smith   |    1500 |
+| James   | Smith   |     790 |
+| James   | Smith   |    1100 |
+| James   | Smith   |    1350 |
+| James   | ADAMS   |   18.69 |
+| James   | ADAMS   | 1098.16 |
+| James   | ADAMS   |   18.69 |
+| James   | ADAMS   | 5160.45 |
+| James   | ADAMS   | 1098.16 |
+| James   | ADAMS   | 1729.67 |
+| James   | ADAMS   |    3434 |
+| James   | ADAMS   |     457 |
+| James   | ADAMS   |     138 |
+| James   | ADAMS   |     980 |
+| James   | ADAMS   |    2133 |
+| James   | ADAMS   |    1000 |
+| James   | ADAMS   |    1500 |
+| James   | ADAMS   |     790 |
+| James   | ADAMS   |    1100 |
+| James   | ADAMS   |    1350 |
++---------+---------+---------+
+100 rows in set (0.02 sec)
+
+2.	List employee name and name of managers.
+
+mysql> select e.ename as Employee ,z.ename as Manager from emp e, emp z where e.mgr=z.empno;
++----------+---------+
+| Employee | Manager |
++----------+---------+
+| GITA     | GRASS   |
+| VRUSHALI | GRASS   |
+| SHARMIN  | GRASS   |
+| BANDISH  | GRASS   |
+| SMITH    | FORD    |
+| AARAV    | FORD    |
+| THOMAS   | GRASS   |
+| ALLEN    | BLAKE   |
+| WARD     | BLAKE   |
+| JONES    | KING    |
+| MARTIN   | BLAKE   |
+| BLAKE    | KING    |
+| CLARK    | KING    |
+| SCOTT    | JONES   |
+| FRED     | KING    |
+| TURNER   | BLAKE   |
+| ADAMS    | SCOTT   |
+| JAMES    | BLAKE   |
+| FORD     | JONES   |
+| HOFFMAN  | JONES   |
+| GRASS    | HOFFMAN |
+| MILLER   | CLARK   |
+| AARUSH   | FORD    |
+| ALEX     | BLAKE   |
+| NATASHA  | GRASS   |
+| SANGITA  | GRASS   |
+| SUPRIYA  | GRASS   |
++----------+---------+
+27 rows in set (0.00 sec)
+
+3.	Display details of all departments and the corresponding employees 
+
+mysql> select * from emp where exists (select * from dept where emp.deptno=dept.deptno);
++-------+----------+--------+---------------------+------+------------+------+------+--------+---------+--------------+------------+------------+----------+
+| EMPNO | ENAME    | GENDER | JOB                 | MGR  | HIREDATE   | SAL  | COMM | DEPTNO | BONUSID | USER NAME    | PWD        | PHONE      | isActive |
++-------+----------+--------+---------------------+------+------------+------+------+--------+---------+--------------+------------+------------+----------+
+|  6001 | GITA     | F      | Compliance officers | 7920 | 1981-07-19 | 1750 | NULL |     30 |       1 | GITA         | sales@2017 | NULL       |        1 |
+|  6129 | VRUSHALI | F      | Compliance officers | 7920 | 1981-07-19 | 1750 | NULL |     50 |       1 | VRUSHALI     | PUN@8877   | NULL       |        1 |
+|  6473 | SHARMIN  | F      | Public Relation     | 7920 | 1981-07-19 | 1750 | NULL |     20 |       1 | SHARMIN      | a12recmpm  | NULL       |        1 |
+|  6781 | BANDISH  | F      | Public Relation     | 7920 | 1981-07-19 | 1750 | NULL |     20 |       1 | BANDISH      | a12recmpm  | NULL       |        1 |
+|  7369 | SMITH    | M      | CLERK               | 7902 | 1980-12-17 |  800 | NULL |     20 |       2 | TRITONE      | a12recmpm  | 7032300023 |        0 |
+|  7415 | AARAV    | M      | CLERK               | 7902 | 1981-12-31 | 3350 | NULL |     10 |    NULL | AARAV        | NULL       | 7032300084 |        0 |
+|  7421 | THOMAS   | M      | CLERK               | 7920 | 1981-07-19 | 1750 | NULL |     10 |       1 | THOMAS       | r50mpm     | 7032300011 |        0 |
+|  7499 | ALLEN    | M      | SALESMAN            | 7698 | 1981-02-20 | 1600 |  300 |     30 |       4 | ALWAYS TESTE | sales@2017 | 7032300096 |        1 |
+|  7521 | WARD     | M      | SALESMAN            | 7698 | 1981-02-22 | 1250 |  500 |     30 |       1 | WARD         | sales@2017 | 7132300034 |        1 |
+|  7566 | JONES    | M      | MANAGER             | 7839 | 1981-04-02 | 2975 | NULL |     20 |       4 | HONEYCOMB    | a12recmpm  | 7132300039 |        1 |
+|  7654 | MARTIN   | M      | SALESMAN            | 7698 | 1981-09-28 | 1250 | 1400 |     30 |       6 | LIFE RACER   | sales@2017 | 7132300050 |        1 |
+|  7698 | BLAKE    | M      | MANAGER             | 7839 | 1981-05-01 | 2850 | NULL |     30 |       1 | BIG BEN      | sales@2017 | 7132300027 |        1 |
+|  7782 | CLARK    | M      | MANAGER             | 7839 | 1981-06-09 | 2450 | NULL |     10 |       3 | CLARK        | r50mpm     | 7032300001 |        1 |
+|  7788 | SCOTT    | M      | ANALYST             | 7566 | 1982-12-09 | 3000 | NULL |     20 |       3 | WHITE SAND   | a12recmpm  | NULL       |        1 |
+|  7839 | KING     | M      | PRESIDENT           | NULL | 1981-11-17 | 5000 | NULL |     10 |       1 | KING         | r50mpm     | 7132300081 |        1 |
+|  7840 | FRED     | M      | vice PRESIDENT      | 7839 | 1983-08-09 | 5000 | NULL |     20 |       1 | SAND STONE   | a12recmpm  | NULL       |        1 |
+|  7844 | TURNER   | M      | SALESMAN            | 7698 | 1981-09-08 | 1500 |    0 |     30 |       5 | SAND DUST    | sales@2017 | NULL       |        1 |
+|  7876 | ADAMS    | M      | CLERK               | 7788 | 1983-01-12 | 1100 | NULL |     20 |       1 | CRAZY ANYONE | a12recmpm  | 7132300086 |        1 |
+|  7900 | JAMES    | M      | CLERK               | 7698 | 1981-12-03 |  950 | NULL |     30 |       2 | CRAZY LEADER | sales@2017 | 7132300042 |        1 |
+|  7902 | FORD     | M      | ANALYST             | 7566 | 1981-12-03 | 3000 | NULL |     20 |       4 | CONBRIO      | a12recmpm  | NULL       |        0 |
+|  7919 | HOFFMAN  | M      | MANAGER             | 7566 | 1982-03-24 | 4150 | NULL |     30 |       3 | INTERVAL     | sales@2017 | NULL       |        1 |
+|  7920 | GRASS    | M      | SALESMAN            | 7919 | 1980-02-14 | 2575 | 2700 |     30 |       5 | GRASS        | sales@2017 | NULL       |        1 |
+|  7934 | MILLER   | M      | CLERK               | 7782 | 1982-01-23 | 1300 | NULL |     10 |       2 | QUARTERNOTE  | r50mpm     | 7132300055 |        0 |
+|  7945 | AARUSH   | M      | SALESMAN            | 7902 | 1980-02-14 | 1350 | 2700 |     30 |    NULL | AARUSH       | ABCDEF     | NULL       |        0 |
+|  7949 | ALEX     | M      | MANAGER             | 7698 | 1982-01-24 | 1250 |  500 |     30 |       5 | QUARTERREST  | sales@2017 | 7156567183 |        1 |
+|  8433 | NATASHA  | F      | CLERK               | 7920 | 1981-07-19 | 1750 | NULL |     30 |       1 | NATASHA      | sales@2017 | NULL       |        1 |
+|  9400 | SANGITA  | F      | Compliance officers | 7920 | 1981-07-19 | 1750 | NULL |     50 |       1 | SANGITA      | NULL       | NULL       |        1 |
+|  9473 | SUPRIYA  | F      | ANALYST             | 7920 | 1981-07-19 | 1750 | NULL |     50 |       1 | SUPRIYA      | XYZ@1234   | NULL       |        1 |
++-------+----------+--------+---------------------+------+------------+------+------+--------+---------+--------------+------------+------------+----------+
+28 rows in set (0.08 sec)
+
+
+4.	Display all customer names with their order details (order number and ship date) for the orders shipped in 1987.
+
+mysql> select name,custid,ordid,shipdate,status,total from customer simple join ord using (custid) where year(shipdate)=1987;
++----------------------------------------------+--------+-------+---------------------+------------+----------+
+| name                                         | custid | ordid | shipdate            | status     | total    |
++----------------------------------------------+--------+-------+---------------------+------------+----------+
+| JOCKSPORTS                                   |    100 |   620 | 1987-03-12 00:00:00 | Cancelled  |  4450.00 |
+| JOCKSPORTS                                   |    100 |   621 | 1987-01-01 00:00:00 | Shipped    |   730.00 |
+| TKB SPORT SHOP                               |    101 |   610 | 1987-01-08 00:00:00 | In Process |   101.40 |
+| VOLLYRITE                                    |    102 |   611 | 1987-01-11 00:00:00 | Shipped    |    45.00 |
+| VOLLYRITE                                    |    102 |   614 | 1987-02-05 00:00:00 | In Process | 23940.00 |
+| VOLLYRITE                                    |    102 |   618 | 1987-03-06 00:00:00 | On Hold    |  3510.50 |
+| JUST TENNIS                                  |    103 |   616 | 1987-02-10 00:00:00 | Resolved   |   764.00 |
+| EVERY MOUNTAIN                               |    104 |   612 | 1987-01-20 00:00:00 | Cancelled  |  5860.00 |
+| EVERY MOUNTAIN                               |    104 |   619 | 1987-02-04 00:00:00 | In Process |  1260.00 |
+| K + T SPORTS                                 |    105 |   617 | 1987-03-03 00:00:00 | Shipped    | 46370.00 |
+| WOMENS SPORTS                                |    107 |   615 | 1987-02-06 00:00:00 | In Process |   710.00 |
+| NORTH WOODS HEALTH AND FITNESS SUPPLY CENTER |    108 |   613 | 1987-02-01 00:00:00 | Shipped    |  6400.00 |
++----------------------------------------------+--------+-------+---------------------+------------+----------+
+12 rows in set (0.02 sec)
+
+
+5.	Display salesman names and names of customers they are dealing with.
+
+mysql> select cnum,cname,snum,sname from customers simple join salespeople using (snum);
++------+---------+------+---------+
+| cnum | cname   | snum | sname   |
++------+---------+------+---------+
+| 2001 | Santosh | 1001 | Rajan   |
+| 2006 | Raja    | 1001 | Rajan   |
+| 2003 | Raj     | 1002 | Natasha |
+| 2004 | Grass   | 1002 | Natasha |
+| 2002 | Joe     | 1003 | Alax    |
+| 2007 | Jackson | 1004 | Monika  |
+| 2008 | William | 1007 | James   |
+| 2009 | Smith   | 1007 | James   |
+| 2010 | ADAMS   | 1007 | James   |
++------+---------+------+---------+
+9 rows in set (0.02 sec)
+
+
+7.	Display salesman who did not earn commission, with customer names whom they are dealing with
+
+mysql> select cnum,cname,snum,sname from customers simple join salespeople using (snum) where comm=0;
+Empty set (0.00 sec)
+
+
+8.	Display salesman names, salary, commission and their salary grades.
+
+mysql> select ename,emp.sal,grade from emp,salgrade s where sal between s.losal and s.hisal;
++----------+------+-------+
+| ename    | sal  | grade |
++----------+------+-------+
+| GITA     | 1750 |     3 |
+| VRUSHALI | 1750 |     3 |
+| SHARMIN  | 1750 |     3 |
+| BANDISH  | 1750 |     3 |
+| SMITH    |  800 |     1 |
+| AARAV    | 3350 |     5 |
+| THOMAS   | 1750 |     3 |
+| ALLEN    | 1600 |     3 |
+| WARD     | 1250 |     2 |
+| JONES    | 2975 |     4 |
+| MARTIN   | 1250 |     2 |
+| BLAKE    | 2850 |     4 |
+| CLARK    | 2450 |     4 |
+| SCOTT    | 3000 |     4 |
+| KING     | 5000 |     6 |
+| FRED     | 5000 |     6 |
+| TURNER   | 1500 |     3 |
+| ADAMS    | 1100 |     1 |
+| JAMES    |  950 |     1 |
+| FORD     | 3000 |     4 |
+| HOFFMAN  | 4150 |     6 |
+| GRASS    | 2575 |     4 |
+| MILLER   | 1300 |     2 |
+| AARUSH   | 1350 |     2 |
+| ALEX     | 1250 |     2 |
+| NATASHA  | 1750 |     3 |
+| SANGITA  | 1750 |     3 |
+| SUPRIYA  | 1750 |     3 |
++----------+------+-------+
+28 rows in set (0.00 sec)
+
+
+9.	Display all Tennis products and their price details (standard and minimum price).
+
+mysql> select prodid, prodname,amount from sales having prodname like '%tennis%';
++--------+-------------------------+----------+
+| prodid | prodname                | amount   |
++--------+-------------------------+----------+
+| 100870 | ACE TENNIS BALLS-3 PACK |  3306.00 |
+| 100860 | ACE TENNIS RACKET I     | 16569.00 |
+| 100890 | ACE TENNIS NET          |   464.00 |
+| 100861 | ACE TENNIS RACKET II    |  4584.00 |
+| 100860 | ACE TENNIS RACKET I     |   440.00 |
+| 100870 | ACE TENNIS BALLS-3 PACK |  1400.00 |
+| 101860 | SP TENNIS RACKET        |  1200.00 |
+| 102130 | RH: "GUIDE TO TENNIS"   |    34.00 |
+| 102130 | RH: "GUIDE TO TENNIS"   |  1703.40 |
+| 100871 | ACE TENNIS BALLS-6 PACK |   846.80 |
+| 101860 | SP TENNIS RACKET        |    24.00 |
+| 100861 | ACE TENNIS RACKET II    |   485.00 |
+| 100870 | ACE TENNIS BALLS-3 PACK |   292.50 |
+| 100890 | ACE TENNIS NET          |    50.00 |
+| 100860 | ACE TENNIS RACKET I     |    35.00 |
+| 100870 | ACE TENNIS BALLS-3 PACK |     8.40 |
+| 100890 | ACE TENNIS NET          |    58.00 |
+| 100861 | ACE TENNIS RACKET II    |  2300.50 |
+| 100860 | ACE TENNIS RACKET I     |  3000.00 |
+| 100861 | ACE TENNIS RACKET II    |   810.00 |
+| 100871 | ACE TENNIS BALLS-6 PACK |   560.00 |
+| 101860 | SP TENNIS RACKET        |  4800.00 |
+| 100871 | ACE TENNIS BALLS-6 PACK |  5600.00 |
+| 100861 | ACE TENNIS RACKET II    |   180.00 |
+| 100870 | ACE TENNIS BALLS-3 PACK |   280.00 |
+| 100871 | ACE TENNIS BALLS-6 PACK |   250.00 |
+| 100861 | ACE TENNIS RACKET II    |   450.00 |
+| 100870 | ACE TENNIS BALLS-3 PACK |   140.00 |
+| 100890 | ACE TENNIS NET          |   116.00 |
+| 102130 | RH: "GUIDE TO TENNIS"   |    34.00 |
+| 100860 | ACE TENNIS RACKET I     |  1750.00 |
+| 100861 | ACE TENNIS RACKET II    |  4500.00 |
+| 100870 | ACE TENNIS BALLS-3 PACK |  1400.00 |
+| 100871 | ACE TENNIS BALLS-6 PACK |  2800.00 |
+| 100890 | ACE TENNIS NET          | 29000.00 |
+| 101860 | SP TENNIS RACKET        |  2400.00 |
+| 102130 | RH: "GUIDE TO TENNIS"   |   340.00 |
+| 102130 | RH: "GUIDE TO TENNIS"   |   340.00 |
+| 100860 | ACE TENNIS RACKET I     |   350.00 |
++--------+-------------------------+----------+
+39 rows in set (0.03 sec)
+
+
+10.	Display the products purchased by either JOCKSPORTS (customer number 100) or JUST TENNIS (customer number 103) or both of them
+
+mysql> select * from sales where custname='just tennis' or custname='jocksports';
++-------+--------+-------------+--------+-------------------------+---------+
+| REPID | CUSTID | CUSTNAME    | PRODID | PRODNAME                | AMOUNT  |
++-------+--------+-------------+--------+-------------------------+---------+
+|  7844 |    100 | JOCKSPORTS  | 102130 | RH: "GUIDE TO TENNIS"   | 1703.40 |
+|  7844 |    100 | JOCKSPORTS  | 100861 | ACE TENNIS RACKET II    |  485.00 |
+|  7844 |    100 | JOCKSPORTS  | 100870 | ACE TENNIS BALLS-3 PACK |  292.50 |
+|  7844 |    100 | JOCKSPORTS  | 100890 | ACE TENNIS NET          |   50.00 |
+|  7844 |    100 | JOCKSPORTS  | 100860 | ACE TENNIS RACKET I     |  350.00 |
+|  7844 |    100 | JOCKSPORTS  | 200376 | SB ENERGY BAR-6 PACK    | 2400.00 |
+|  7521 |    103 | JUST TENNIS | 100861 | ACE TENNIS RACKET II    |  450.00 |
+|  7521 |    103 | JUST TENNIS | 100870 | ACE TENNIS BALLS-3 PACK |  140.00 |
+|  7521 |    103 | JUST TENNIS | 100890 | ACE TENNIS NET          |  116.00 |
+|  7521 |    103 | JUST TENNIS | 102130 | RH: "GUIDE TO TENNIS"   |   34.00 |
+|  7521 |    103 | JUST TENNIS | 200376 | SB ENERGY BAR-6 PACK    |   24.00 |
++-------+--------+-------------+--------+-------------------------+---------+
+11 rows in set (0.00 sec)
+
+11.	Display the department name, and salary of any employee whose salary and commission matches both the salary and commission of any employee in DALLAS.
+
+mysql> select ename from emp where sal in (select sal from emp where deptno =(select deptno from dept where loc="dallas"));
++----------+
+| ename    |
++----------+
+| GITA     |
+| VRUSHALI |
+| SHARMIN  |
+| BANDISH  |
+| SMITH    |
+| THOMAS   |
+| JONES    |
+| SCOTT    |
+| KING     |
+| FRED     |
+| ADAMS    |
+| FORD     |
+| NATASHA  |
+| SANGITA  |
+| SUPRIYA  |
++----------+
+15 rows in set (0.01 sec)
+
+12.	List out the common jobs in Research and Accounting Departments in ascending order.
+
+mysql> select e.job from  emp e inner join dept d on  e.deptno=d.deptno where dname='accounting' or dname='research'  order by e.job desc;
++-----------------+
+| job             |
++-----------------+
+| vice PRESIDENT  |
+| Public Relation |
+| Public Relation |
+| PRESIDENT       |
+| MANAGER         |
+| MANAGER         |
+| CLERK           |
+| CLERK           |
+| CLERK           |
+| CLERK           |
+| CLERK           |
+| ANALYST         |
+| ANALYST         |
++-----------------+
+13 rows in set (0.00 sec)

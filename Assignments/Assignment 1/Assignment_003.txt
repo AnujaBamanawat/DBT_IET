@@ -1,0 +1,245 @@
+1.	List all courses.
+
+select * from course;
++-----------+--------------+------+-----+---------+-------+
+| Field     | Type         | Null | Key | Default | Extra |
++-----------+--------------+------+-----+---------+-------+
+| ID        | int          | NO   | PRI | NULL    |       |
+| namefirst | varchar(45)  | YES  |     | NULL    |       |
+| namelast  | varchar(45)  | YES  |     | NULL    |       |
+| DOB       | date         | YES  |     | NULL    |       |
+| emailID   | varchar(128) | YES  |     | NULL    |       |
++-----------+--------------+------+-----+---------+-------+
+
+
+2. List namefirst, nameLast of all student.
+
+select namefirst FirstName, namelast LastName from student;
++-----------+----------+
+| FirstName | LastName |
++-----------+----------+
+| saleel    | bagde    |
+| omkar     | rakde    |
+| ulka      | joshi    |
+| rahul     | patil    |
+| ruhan     | bagde    |
+| lala      | prasad   |
+| sharmin   | bagde    |
+| vrushali  | bagde    |
+| vasant    | khande   |
+| nitish    | patil    |
+| neel      | save     |
+| deep      | save     |
+| nrupali   | save     |
+| supriya   | karnik   |
+| bandish   | karnik   |
+| sangita   | karnik   |
+| sangita   | menon    |
+| rahul     | shah     |
+| bhavin    | patel    |
+| kaushal   | patil    |
+| pankaj    | gandhi   |
+| rajan     | patel    |
+| bhavin    | patel    |
+| mukesh    | bhavsar  |
+| dilu      | khande   |
+| sonam     | khan     |
+| rohit     | patil    |
+| raj       | bubber   |
++-----------+----------+
+
+3. List namefirst, namelast, DOB and emailID of all students.
+
+mysql> select namefirst FirstNAME, namelast LastNAME, DOB, emailID from student;
++-----------+----------+------------+--------------------------+
+| FirstNAME | LastNAME | DOB        | emailID                  |
++-----------+----------+------------+--------------------------+
+| saleel    | bagde    | 1984-06-12 | saleel.bagde@gmail.com   |
+| omkar     | rakde    | 1969-10-25 | omkar.rakde@gmail.com    |
+| ulka      | joshi    | 1970-10-25 | ulka.joshi@gmail.com     |
+| rahul     | patil    | 1982-10-31 | rahul.patil@gmail.com    |
+| ruhan     | bagde    | 1984-01-12 | ruhan.bagde@gmail.com    |
+| lala      | prasad   | 1980-12-01 | lala.prasad@gmail.com    |
+| sharmin   | bagde    | 1986-12-14 | sharmin.bagde@gmail.com  |
+| vrushali  | bagde    | 1984-12-29 | vrushali.bagde@gmail.com |
+| vasant    | khande   | 1992-10-26 | vasant.khande@gmail.com  |
+| nitish    | patil    | 1990-10-26 | nitish.patil@gmail.com   |
+| neel      | save     | 1975-10-30 | neel.save@gmail.com      |
+| deep      | save     | 1986-11-30 | deep.save@gmail.com      |
+| nrupali   | save     | 1981-12-01 | nrupali.save@gmail.com   |
+| supriya   | karnik   | 1983-12-15 | supriya.karnik@gmail.com |
+| bandish   | karnik   | 1987-12-30 | bandish.karnik@gmail.com |
+| sangita   | karnik   | 1990-12-01 | sangita.karnik@gmail.com |
+| sangita   | menon    | 1989-10-26 | sangita.menon@gmail.com  |
+| rahul     | shah     | 1982-06-12 | rahul.shah@gmail.com     |
+| bhavin    | patel    | 1983-11-13 | bhavin.patel@gmail.com   |
+| kaushal   | patil    | 1982-07-30 | kaushal.patil@gmail.com  |
+| pankaj    | gandhi   | 1982-07-30 | pankaj.gandhi@gmail.com  |
+| rajan     | patel    | 1982-07-30 | rajan.patel@gmail.com    |
+| bhavin    | patel    | 1982-07-30 | bhavin.patel@gmail.com   |
+| mukesh    | bhavsar  | 1982-07-30 | mukesh.bhavsar@gmail.com |
+| dilu      | khande   | 1982-07-30 | dilu.khande@gmail.com    |
+| sonam     | khan     | 1972-05-13 | sonam.khan@gmail.com     |
+| rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com    |
+| raj       | bubber   | 1982-02-28 | raj.bubber@gmail.com     |
++-----------+----------+------------+--------------------------+
+28 rows in set (0.00 sec)
+
+
+
+4.	Display student information of the ID is 15.
+
+mysql> select * from student where ID=15;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+| 15 | bandish   | karnik   | 1987-12-30 | bandish.karnik@gmail.com |
++----+-----------+----------+------------+--------------------------+
+1 row in set (0.00 sec)
+
+5.	List namefirst, namelast, and emailID of student whose student namefirst is ‘Nitish’.
+
+mysql> select namefirst, namelast, emailID from student where namefirst='Nitish';
++-----------+----------+------------------------+
+| namefirst | namelast | emailID                |
++-----------+----------+------------------------+
+| nitish    | patil    | nitish.patil@gmail.com |
++-----------+----------+------------------------+
+
+6.	List all students having ID greater than equal to 12.
+
+mysql> select * from student where ID>=12;
++----+-----------+----------+------------+--------------------------+
+| ID | namefirst | namelast | DOB        | emailID                  |
++----+-----------+----------+------------+--------------------------+
+| 12 | deep      | save     | 1986-11-30 | deep.save@gmail.com      |
+| 13 | nrupali   | save     | 1981-12-01 | nrupali.save@gmail.com   |
+| 14 | supriya   | karnik   | 1983-12-15 | supriya.karnik@gmail.com |
+| 15 | bandish   | karnik   | 1987-12-30 | bandish.karnik@gmail.com |
+| 16 | sangita   | karnik   | 1990-12-01 | sangita.karnik@gmail.com |
+| 17 | sangita   | menon    | 1989-10-26 | sangita.menon@gmail.com  |
+| 18 | rahul     | shah     | 1982-06-12 | rahul.shah@gmail.com     |
+| 19 | bhavin    | patel    | 1983-11-13 | bhavin.patel@gmail.com   |
+| 20 | kaushal   | patil    | 1982-07-30 | kaushal.patil@gmail.com  |
+| 21 | pankaj    | gandhi   | 1982-07-30 | pankaj.gandhi@gmail.com  |
+| 22 | rajan     | patel    | 1982-07-30 | rajan.patel@gmail.com    |
+| 23 | bhavin    | patel    | 1982-07-30 | bhavin.patel@gmail.com   |
+| 24 | mukesh    | bhavsar  | 1982-07-30 | mukesh.bhavsar@gmail.com |
+| 25 | dilu      | khande   | 1982-07-30 | dilu.khande@gmail.com    |
+| 26 | sonam     | khan     | 1972-05-13 | sonam.khan@gmail.com     |
+| 27 | rohit     | patil    | 1976-12-31 | rohit.patil@gmail.com    |
+| 28 | raj       | bubber   | 1982-02-28 | raj.bubber@gmail.com     |
++----+-----------+----------+------------+--------------------------+
+17 rows in set (0.00 sec)
+
+7.	List all student details whose DOB is ‘1980-12-01’
+
+mysql> select * from student where DOB='1980-12-01';
++----+-----------+----------+------------+-----------------------+
+| ID | namefirst | namelast | DOB        | emailID               |
++----+-----------+----------+------------+-----------------------+
+|  6 | lala      | prasad   | 1980-12-01 | lala.prasad@gmail.com |
++----+-----------+----------+------------+-----------------------+
+1 row in set (0.00 sec)
+
+8.	Display the phone details where student ID is 5;
+
+mysql> select * from student_phone where ID=5;
++----+-----------+------------+----------+
+| ID | studentID | number     | isActive |
++----+-----------+------------+----------+
+|  5 |         5 | 7032300801 |        1 |
++----+-----------+------------+----------+
+1 row in set (0.00 sec)
+
+9.	List student address whose student ID is 10.
+
+mysql> select * from student_address where ID=10;
++----+-----------+-----------------------------------------------------+
+| ID | studentID | address                                             |
++----+-----------+-----------------------------------------------------+
+| 10 |        10 | 7710 Covington Rd , New State Road, New York, 37188 |
++----+-----------+-----------------------------------------------------+
+
+10.	List all faculty details.
+
+mysql> select * from faculty;
++----+-----------+----------+------------+------------------------+
+| ID | namefirst | namelast | DOB        | emailID                |
++----+-----------+----------+------------+------------------------+
+|  1 | prachi    | gupta    | 1974-06-12 | prachi.gupta@gmail.com |
+|  2 | ketan     | shukla   | 1972-10-25 | ketan.shukla@gmail.com |
+|  3 | kiran     | dev      | 1971-10-25 | kiran.dev@gmail.com    |
+|  4 | parag     | patil    | 1972-10-31 | parag.patil@gmail.com  |
++----+-----------+----------+------------+------------------------+
+
+11.	List all phone number whose faculty ID is 2.
+
+mysql> select * from faculty_phone where ID=2;
++----+-----------+------------+
+| ID | facultyID | number     |
++----+-----------+------------+
+|  2 |         2 | 7032300039 |
++----+-----------+------------+
+1 row in set (0.00 sec)
+
+12.	List all phone number whose student ID is 13.
+
+mysql> select * from student_phone where studentID=2;
++----+-----------+------------+----------+
+| ID | studentID | number     | isActive |
++----+-----------+------------+----------+
+|  2 |         2 | 7032300039 |        1 |
+| 22 |         2 | 7132300039 |        1 |
++----+-----------+------------+----------+
+2 rows in set (0.00 sec)
+
+13.	List all modules.
+
+mysql> select * from modules;
++----+---------------------------+----------+
+| ID | name                      | duration |
++----+---------------------------+----------+
+|  1 | Oracle                    |        1 |
+|  2 | PHP                       |        1 |
+|  3 | MySQL                     |        1 |
+|  4 | Node                      |        1 |
+|  5 | C++                       |        1 |
+|  6 | C                         |        1 |
+|  7 | JAVA1                     |        2 |
+|  8 | JAVA2                     |        2 |
+|  9 | MongoDB                   |        1 |
+| 10 | NET                       |        2 |
+| 11 | Hive                      |        1 |
+| 12 | Python                    |        1 |
+| 13 | Aptitude                  |        1 |
+| 14 | OOPs with C++ Programming |        3 |
+| 15 | Data Structures           |        3 |
+| 16 | OS Concepts               |        3 |
+| 17 | iOS Programming           |        3 |
++----+---------------------------+----------+
+17 rows in set (0.00 sec)
+
+14.	List the course_modules whose courseID is 1.
+
+mysql> select * from course_modules where ID=1;
++----+----------+----------+
+| ID | courseID | moduleID |
++----+----------+----------+
+|  1 |        1 |        1 |
++----+----------+----------+
+1 row in set (0.00 sec)
+
+15.	Display all course_batches who’s sitting capacity is 80.
+
+mysql> select * from course_batches where capacity>=80;
++----+---------+----------+------------+------------+----------+
+| ID | name    | courseID | starton    | endson     | capacity |
++----+---------+----------+------------+------------+----------+
+|  1 | Batch1  |        1 | 2016-02-01 | 2016-08-31 |       80 |
+|  6 | Batch6  |        1 | 2015-02-01 | 2015-08-31 |       80 |
+| 11 | Batch11 |        1 | 2017-08-01 | 2018-02-28 |       80 |
+| 16 | Batch16 |        1 | 2014-08-01 | 2015-02-28 |       80 |
+| 21 | Batch21 |        1 | 2015-08-01 | 2016-02-28 |       80 |
++----+---------+----------+------------+------------+----------+
+5 rows in set (0.00 sec)
